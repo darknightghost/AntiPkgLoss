@@ -16,10 +16,5 @@
 */
 
 #include <stdio.h>
-#include "common/common/common.h"
-
-int main(int argc, char* argv)
-{
-	printf("aaaaa\n");
-	return 0;
-}
+#include <stdlib.h>
+#include "map.h"

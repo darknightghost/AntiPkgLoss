@@ -10,7 +10,7 @@ LD = i686-w64-mingw32-gcc
 LDFLAGS = 
 LDRULE = $(LD) $(LDFLAGS) -o $@ $^
 DEP = i686-w64-mingw32-gcc
-DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then echo $(OBJDIR)/$(ARCH)/`cat $@` > $@; fi
+DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf("%s%s\n","$(OBJDIR)/$(ARCH)/",$$0)} NR != 1 {print $$0}' > $@; fi
 AFTER = 
 OBJDIR = ../../obj/client
 OUTPUT = ../../bin/$(ARCH)/client.exe

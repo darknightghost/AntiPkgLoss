@@ -6,24 +6,24 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 AFTER	./src/client/Makefile	/^AFTER = $/;"	m
 AFTER	./src/server/Makefile	/^AFTER = $/;"	m
-ARCH	./src/client/Makefile	/^ARCH = x86$/;"	m
-ARCH	./src/server/Makefile	/^ARCH = x86$/;"	m
+ARCH	./src/client/Makefile	/^ARCH = amd64$/;"	m
+ARCH	./src/server/Makefile	/^ARCH = amd64$/;"	m
 AS	./src/client/Makefile	/^AS = i686-w64-mingw32-gcc$/;"	m
 AS	./src/server/Makefile	/^AS = gcc$/;"	m
-ASFLAGS	./src/client/Makefile	/^ASFLAGS = -m32 -c -g -DX86$/;"	m
-ASFLAGS	./src/server/Makefile	/^ASFLAGS = -m32 -c -g -DX86$/;"	m
+ASFLAGS	./src/client/Makefile	/^ASFLAGS = -c -g -DAMD64$/;"	m
+ASFLAGS	./src/server/Makefile	/^ASFLAGS = -c -g -DAMD64$/;"	m
 ASRULE	./src/client/Makefile	/^ASRULE = $(AS) $(ASFLAGS) -o $@ $<$/;"	m
 ASRULE	./src/server/Makefile	/^ASRULE = $(AS) $(ASFLAGS) -o $@ $<$/;"	m
 CC	./src/client/Makefile	/^CC = i686-w64-mingw32-gcc$/;"	m
 CC	./src/server/Makefile	/^CC = gcc$/;"	m
 CCRULE	./src/client/Makefile	/^CCRULE = $(CC) $(CFLAGS) -o $@ $<$/;"	m
 CCRULE	./src/server/Makefile	/^CCRULE = $(CC) $(CFLAGS) -o $@ $<$/;"	m
-CFLAGS	./src/client/Makefile	/^CFLAGS = -c -g -DX86$/;"	m
-CFLAGS	./src/server/Makefile	/^CFLAGS = -c -g -DX86$/;"	m
+CFLAGS	./src/client/Makefile	/^CFLAGS = -c -g -DAMD64$/;"	m
+CFLAGS	./src/server/Makefile	/^CFLAGS = -c -g -DAMD64$/;"	m
 DEP	./src/client/Makefile	/^DEP = i686-w64-mingw32-gcc$/;"	m
 DEP	./src/server/Makefile	/^DEP = gcc$/;"	m
-DEPRULE	./src/client/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then echo $(OBJDIR)\/$(ARCH)\/`cat $@` > $@; fi$/;"	m
-DEPRULE	./src/server/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then echo $(OBJDIR)\/$(ARCH)\/`cat $@` > $@; fi$/;"	m
+DEPRULE	./src/client/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf("%s%s\\n","$(OBJDIR)\/$(ARCH)\/",$$0)} NR != 1 {print $$0}' > $@; fi$/;"	m
+DEPRULE	./src/server/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf("%s%s\\n","$(OBJDIR)\/$(ARCH)\/",$$0)} NR != 1 {print $$0}' > $@; fi$/;"	m
 LD	./src/client/Makefile	/^LD = i686-w64-mingw32-gcc$/;"	m
 LD	./src/server/Makefile	/^LD = gcc$/;"	m
 LDFLAGS	./src/client/Makefile	/^LDFLAGS = $/;"	m
@@ -36,5 +36,158 @@ OUTPUT	./src/client/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/client.exe$/;"	m
 OUTPUT	./src/server/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/server$/;"	m
 TARGET	./src/client/Makefile	/^TARGET = client$/;"	m
 TARGET	./src/server/Makefile	/^TARGET = server$/;"	m
+_rbtree_node	./src/client/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
+_rbtree_node	./src/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
+_rbtree_node	./src/server/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
+_rbtree_node::key	./src/client/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::key	./src/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::key	./src/server/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::p_left	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_left;			\/\/Left child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_left	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_left;			\/\/Left child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_left	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_left;			\/\/Left child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_parent	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_parent;		\/\/Parent node$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_parent	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_parent;		\/\/Parent node$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_parent	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_parent;		\/\/Parent node$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_right	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_right	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::p_right	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+_rbtree_node::value	./src/client/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::value	./src/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::value	./src/server/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+bool	./src/client/common/common/types.h	/^	typedef	u8						bool;$/;"	t
+bool	./src/client/common/common/types.h	/^	typedef	u8					bool;$/;"	t
+bool	./src/common/common/types.h	/^	typedef	u8						bool;$/;"	t
+bool	./src/common/common/types.h	/^	typedef	u8					bool;$/;"	t
+bool	./src/server/common/common/types.h	/^	typedef	u8						bool;$/;"	t
+bool	./src/server/common/common/types.h	/^	typedef	u8					bool;$/;"	t
+false	./src/client/common/common/types.h	39;"	d
+false	./src/client/common/common/types.h	62;"	d
+false	./src/common/common/types.h	39;"	d
+false	./src/common/common/types.h	62;"	d
+false	./src/server/common/common/types.h	39;"	d
+false	./src/server/common/common/types.h	62;"	d
+key	./src/client/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+key	./src/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+key	./src/server/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+le16	./src/client/common/common/types.h	/^	typedef	u16						le16;$/;"	t
+le16	./src/client/common/common/types.h	/^	typedef	u16					le16;$/;"	t
+le16	./src/common/common/types.h	/^	typedef	u16						le16;$/;"	t
+le16	./src/common/common/types.h	/^	typedef	u16					le16;$/;"	t
+le16	./src/server/common/common/types.h	/^	typedef	u16						le16;$/;"	t
+le16	./src/server/common/common/types.h	/^	typedef	u16					le16;$/;"	t
+le32	./src/client/common/common/types.h	/^	typedef	u32						le32;$/;"	t
+le32	./src/client/common/common/types.h	/^	typedef	u32					le32;$/;"	t
+le32	./src/common/common/types.h	/^	typedef	u32						le32;$/;"	t
+le32	./src/common/common/types.h	/^	typedef	u32					le32;$/;"	t
+le32	./src/server/common/common/types.h	/^	typedef	u32						le32;$/;"	t
+le32	./src/server/common/common/types.h	/^	typedef	u32					le32;$/;"	t
+le64	./src/client/common/common/types.h	/^	typedef	u64						le64;$/;"	t
+le64	./src/client/common/common/types.h	/^	typedef	u64					le64;$/;"	t
+le64	./src/common/common/types.h	/^	typedef	u64						le64;$/;"	t
+le64	./src/common/common/types.h	/^	typedef	u64					le64;$/;"	t
+le64	./src/server/common/common/types.h	/^	typedef	u64						le64;$/;"	t
+le64	./src/server/common/common/types.h	/^	typedef	u64					le64;$/;"	t
+le8	./src/client/common/common/types.h	/^	typedef	u8						le8;$/;"	t
+le8	./src/client/common/common/types.h	/^	typedef	u8					le8;$/;"	t
+le8	./src/common/common/types.h	/^	typedef	u8						le8;$/;"	t
+le8	./src/common/common/types.h	/^	typedef	u8					le8;$/;"	t
+le8	./src/server/common/common/types.h	/^	typedef	u8						le8;$/;"	t
+le8	./src/server/common/common/types.h	/^	typedef	u8					le8;$/;"	t
 main	./src/client/main.c	/^int main(int argc, char* argv)$/;"	f	signature:(int argc, char* argv)
 main	./src/server/main.c	/^int main(int argc, char* argv)$/;"	f	signature:(int argc, char* argv)
+map_destroy	./src/client/common/common/map/map.h	/^void	map_destroy(pmap_t p_map);$/;"	p	signature:(pmap_t p_map)
+map_destroy	./src/common/common/map/map.h	/^void	map_destroy(pmap_t p_map);$/;"	p	signature:(pmap_t p_map)
+map_destroy	./src/server/common/common/map/map.h	/^void	map_destroy(pmap_t p_map);$/;"	p	signature:(pmap_t p_map)
+map_get	./src/client/common/common/map/map.h	/^void*	map_get(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_get	./src/common/common/map/map.h	/^void*	map_get(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_get	./src/server/common/common/map/map.h	/^void*	map_get(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_insert	./src/client/common/common/map/map.h	/^bool	map_insert(pmap_t p_map, char* key, void* value);$/;"	p	signature:(pmap_t p_map, char* key, void* value)
+map_insert	./src/common/common/map/map.h	/^bool	map_insert(pmap_t p_map, char* key, void* value);$/;"	p	signature:(pmap_t p_map, char* key, void* value)
+map_insert	./src/server/common/common/map/map.h	/^bool	map_insert(pmap_t p_map, char* key, void* value);$/;"	p	signature:(pmap_t p_map, char* key, void* value)
+map_remove	./src/client/common/common/map/map.h	/^void*	map_remove(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_remove	./src/common/common/map/map.h	/^void*	map_remove(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_remove	./src/server/common/common/map/map.h	/^void*	map_remove(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_set	./src/client/common/common/map/map.h	/^void*	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/common/common/map/map.h	/^void*	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/server/common/common/map/map.h	/^void*	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
+map_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+map_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+map_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+p_left	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_left;			\/\/Left child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_left	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_left;			\/\/Left child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_left	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_left;			\/\/Left child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_parent	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_parent;		\/\/Parent node$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_parent	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_parent;		\/\/Parent node$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_parent	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_parent;		\/\/Parent node$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_right	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_right	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+p_right	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+pmap_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+pmap_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+pmap_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+prbtree_node_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+prbtree_node_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+prbtree_node_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+rbtree_node_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+rbtree_node_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+rbtree_node_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+rbtree_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+rbtree_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+rbtree_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+s16	./src/client/common/common/types.h	/^	typedef signed short			s16;$/;"	t
+s16	./src/client/common/common/types.h	/^	typedef signed short		s16;$/;"	t
+s16	./src/common/common/types.h	/^	typedef signed short			s16;$/;"	t
+s16	./src/common/common/types.h	/^	typedef signed short		s16;$/;"	t
+s16	./src/server/common/common/types.h	/^	typedef signed short			s16;$/;"	t
+s16	./src/server/common/common/types.h	/^	typedef signed short		s16;$/;"	t
+s32	./src/client/common/common/types.h	/^	typedef signed int			s32;$/;"	t
+s32	./src/client/common/common/types.h	/^	typedef signed long				s32;$/;"	t
+s32	./src/common/common/types.h	/^	typedef signed int			s32;$/;"	t
+s32	./src/common/common/types.h	/^	typedef signed long				s32;$/;"	t
+s32	./src/server/common/common/types.h	/^	typedef signed int			s32;$/;"	t
+s32	./src/server/common/common/types.h	/^	typedef signed long				s32;$/;"	t
+s64	./src/client/common/common/types.h	/^	typedef signed long			s64;$/;"	t
+s64	./src/client/common/common/types.h	/^	typedef signed long long		s64;$/;"	t
+s64	./src/common/common/types.h	/^	typedef signed long			s64;$/;"	t
+s64	./src/common/common/types.h	/^	typedef signed long long		s64;$/;"	t
+s64	./src/server/common/common/types.h	/^	typedef signed long			s64;$/;"	t
+s64	./src/server/common/common/types.h	/^	typedef signed long long		s64;$/;"	t
+s8	./src/client/common/common/types.h	/^	typedef signed char				s8;$/;"	t
+s8	./src/client/common/common/types.h	/^	typedef signed char			s8;$/;"	t
+s8	./src/common/common/types.h	/^	typedef signed char				s8;$/;"	t
+s8	./src/common/common/types.h	/^	typedef signed char			s8;$/;"	t
+s8	./src/server/common/common/types.h	/^	typedef signed char				s8;$/;"	t
+s8	./src/server/common/common/types.h	/^	typedef signed char			s8;$/;"	t
+true	./src/client/common/common/types.h	38;"	d
+true	./src/client/common/common/types.h	61;"	d
+true	./src/common/common/types.h	38;"	d
+true	./src/common/common/types.h	61;"	d
+true	./src/server/common/common/types.h	38;"	d
+true	./src/server/common/common/types.h	61;"	d
+u16	./src/client/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
+u16	./src/client/common/common/types.h	/^	typedef unsigned short		u16;$/;"	t
+u16	./src/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
+u16	./src/common/common/types.h	/^	typedef unsigned short		u16;$/;"	t
+u16	./src/server/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
+u16	./src/server/common/common/types.h	/^	typedef unsigned short		u16;$/;"	t
+u32	./src/client/common/common/types.h	/^	typedef unsigned int		u32;$/;"	t
+u32	./src/client/common/common/types.h	/^	typedef unsigned long			u32;$/;"	t
+u32	./src/common/common/types.h	/^	typedef unsigned int		u32;$/;"	t
+u32	./src/common/common/types.h	/^	typedef unsigned long			u32;$/;"	t
+u32	./src/server/common/common/types.h	/^	typedef unsigned int		u32;$/;"	t
+u32	./src/server/common/common/types.h	/^	typedef unsigned long			u32;$/;"	t
+u64	./src/client/common/common/types.h	/^	typedef unsigned long		u64;$/;"	t
+u64	./src/client/common/common/types.h	/^	typedef unsigned long long		u64;$/;"	t
+u64	./src/common/common/types.h	/^	typedef unsigned long		u64;$/;"	t
+u64	./src/common/common/types.h	/^	typedef unsigned long long		u64;$/;"	t
+u64	./src/server/common/common/types.h	/^	typedef unsigned long		u64;$/;"	t
+u64	./src/server/common/common/types.h	/^	typedef unsigned long long		u64;$/;"	t
+u8	./src/client/common/common/types.h	/^	typedef	unsigned char			u8;$/;"	t
+u8	./src/client/common/common/types.h	/^	typedef	unsigned char		u8;$/;"	t
+u8	./src/common/common/types.h	/^	typedef	unsigned char			u8;$/;"	t
+u8	./src/common/common/types.h	/^	typedef	unsigned char		u8;$/;"	t
+u8	./src/server/common/common/types.h	/^	typedef	unsigned char			u8;$/;"	t
+u8	./src/server/common/common/types.h	/^	typedef	unsigned char		u8;$/;"	t
+value	./src/client/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+value	./src/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+value	./src/server/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public

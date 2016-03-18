@@ -15,11 +15,19 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <stdio.h>
-#include "common/common/common.h"
+#pragma once
+#include "../types.h"
 
-int main(int argc, char* argv)
-{
-	printf("aaaaa\n");
-	return 0;
-}
+typedef	struct	_rbtree_node {
+	struct	_rbtree_node*	p_parent;		//Parent node
+	struct	_rbtree_node*	p_left;			//Left child
+	struct	_rbtree_node*	p_right;		//Right child
+	char*					key;			//Key
+	void*					value;			//Value
+} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;
+
+bool	map_insert(pmap_t p_map, char* key, void* value);
+void*	map_get(pmap_t p_map, char* key);
+void*	map_set(pmap_t p_map, char* key, char* value);
+void*	map_remove(pmap_t p_map, char* key);
+void	map_destroy(pmap_t p_map);
