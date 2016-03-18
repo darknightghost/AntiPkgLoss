@@ -1,0 +1,74 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ConflictedArchName	cfg_excpt.py	/^class ConflictedArchName(ConflictedName):$/;"	c	language:Python	inherits:ConflictedName
+ConflictedName	cfg_excpt.py	/^class ConflictedName(Exception):$/;"	c	language:Python	inherits:Exception
+ElementNotFound	cfg_excpt.py	/^class ElementNotFound(Exception):$/;"	c	language:Python	inherits:Exception
+UnknownName	cfg_excpt.py	/^class UnknownName(Exception):$/;"	c	language:Python	inherits:Exception
+UnknownNode	cfg_excpt.py	/^class UnknownNode(Exception):$/;"	c	language:Python	inherits:Exception
+__del__	cfg.py	/^	def __del__(self):$/;"	m	language:Python	class:cfg	file:	access:private
+__del__	cfg.py	/^	def __del__(self):$/;"	m	language:Python	class:target	file:	access:private
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:arch	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:checkbox	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:lable	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:listctrl	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:menuobj	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:submenu	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:target	access:public
+__init__	cfg.py	/^	def __init__(self,node):$/;"	m	language:Python	class:textbox	access:public
+__init__	cfg.py	/^	def __init__(self,path):$/;"	m	language:Python	class:cfg	access:public
+__init__	cfg_excpt.py	/^	def __init__(self,name):$/;"	m	language:Python	class:ConflictedName	access:public
+__init__	cfg_excpt.py	/^	def __init__(self,name):$/;"	m	language:Python	class:ElementNotFound	access:public
+__init__	cfg_excpt.py	/^	def __init__(self,name):$/;"	m	language:Python	class:UnknownName	access:public
+__init__	cfg_excpt.py	/^	def __init__(self,name,nodetype):$/;"	m	language:Python	class:UnknownNode	access:public
+__str__	cfg_excpt.py	/^	def __str__(self):$/;"	m	language:Python	class:ConflictedArchName	file:	access:private
+__str__	cfg_excpt.py	/^	def __str__(self):$/;"	m	language:Python	class:ElementNotFound	file:	access:private
+__str__	cfg_excpt.py	/^	def __str__(self):$/;"	m	language:Python	class:UnknownNode	file:	access:private
+arch	cfg.py	/^class arch:$/;"	c	language:Python	inherits:
+cfg	cfg.py	/^class cfg:$/;"	c	language:Python	inherits:
+checkbox	cfg.py	/^class checkbox(menuobj):$/;"	c	language:Python	inherits:menuobj
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:arch	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:cfg	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:checkbox	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:listctrl	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:menuobj	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:submenu	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:target	access:public
+close_menu	cfg.py	/^	def close_menu(self):$/;"	m	language:Python	class:textbox	access:public
+configure	makefile.py	/^def configure(path):$/;"	f	language:Python	access:public
+create_target_makefile	makefile.py	/^def create_target_makefile(target,arch):$/;"	f	language:Python	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,options):$/;"	m	language:Python	class:arch	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list):$/;"	m	language:Python	class:cfg	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:checkbox	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:lable	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:listctrl	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:menuobj	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:submenu	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:target	access:public
+get_build_options	cfg.py	/^	def get_build_options(self,target_list,arch):$/;"	m	language:Python	class:textbox	access:public
+get_menu_obj	cfg.py	/^def get_menu_obj(node):$/;"	f	language:Python	access:public
+get_sources	makefile.py	/^def get_sources(arch):$/;"	f	language:Python	access:public
+get_title	cfg.py	/^	def get_title(self):$/;"	m	language:Python	class:cfg	access:public
+lable	cfg.py	/^class lable(menuobj):$/;"	c	language:Python	inherits:menuobj
+listctrl	cfg.py	/^class listctrl(menuobj):$/;"	c	language:Python	inherits:menuobj
+menuobj	cfg.py	/^class menuobj:$/;"	c	language:Python	inherits:
+minidom	cfg.py	/^from xml.dom import minidom$/;"	i	language:Python
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:arch	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:cfg	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:checkbox	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:lable	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:listctrl	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:menuobj	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:submenu	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:target	access:public
+open_menu	cfg.py	/^	def open_menu(self):$/;"	m	language:Python	class:textbox	access:public
+option_names	cfg.py	/^	option_names = ["AS","ASFLAGS","ASRULE","CC","CFLAGS","CCRULE","LD",$/;"	v	language:Python	class:arch
+os	cfg.py	/^import os$/;"	i	language:Python
+os	makefile.py	/^import os$/;"	i	language:Python
+submenu	cfg.py	/^class submenu(menuobj):$/;"	c	language:Python	inherits:menuobj
+target	cfg.py	/^class target:$/;"	c	language:Python	inherits:
+textbox	cfg.py	/^class textbox(menuobj):$/;"	c	language:Python	inherits:menuobj
+type_dict	cfg.py	/^type_dict = {"textbox" : textbox,$/;"	v	language:Python

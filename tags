@@ -1,0 +1,40 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AFTER	./src/client/Makefile	/^AFTER = $/;"	m
+AFTER	./src/server/Makefile	/^AFTER = $/;"	m
+ARCH	./src/client/Makefile	/^ARCH = x86$/;"	m
+ARCH	./src/server/Makefile	/^ARCH = x86$/;"	m
+AS	./src/client/Makefile	/^AS = i686-w64-mingw32-gcc$/;"	m
+AS	./src/server/Makefile	/^AS = gcc$/;"	m
+ASFLAGS	./src/client/Makefile	/^ASFLAGS = -m32 -c -g -DX86$/;"	m
+ASFLAGS	./src/server/Makefile	/^ASFLAGS = -m32 -c -g -DX86$/;"	m
+ASRULE	./src/client/Makefile	/^ASRULE = $(AS) $(ASFLAGS) -o $@ $<$/;"	m
+ASRULE	./src/server/Makefile	/^ASRULE = $(AS) $(ASFLAGS) -o $@ $<$/;"	m
+CC	./src/client/Makefile	/^CC = i686-w64-mingw32-gcc$/;"	m
+CC	./src/server/Makefile	/^CC = gcc$/;"	m
+CCRULE	./src/client/Makefile	/^CCRULE = $(CC) $(CFLAGS) -o $@ $<$/;"	m
+CCRULE	./src/server/Makefile	/^CCRULE = $(CC) $(CFLAGS) -o $@ $<$/;"	m
+CFLAGS	./src/client/Makefile	/^CFLAGS = -c -g -DX86$/;"	m
+CFLAGS	./src/server/Makefile	/^CFLAGS = -c -g -DX86$/;"	m
+DEP	./src/client/Makefile	/^DEP = i686-w64-mingw32-gcc$/;"	m
+DEP	./src/server/Makefile	/^DEP = gcc$/;"	m
+DEPRULE	./src/client/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then echo $(OBJDIR)\/$(ARCH)\/`cat $@` > $@; fi$/;"	m
+DEPRULE	./src/server/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then echo $(OBJDIR)\/$(ARCH)\/`cat $@` > $@; fi$/;"	m
+LD	./src/client/Makefile	/^LD = i686-w64-mingw32-gcc$/;"	m
+LD	./src/server/Makefile	/^LD = gcc$/;"	m
+LDFLAGS	./src/client/Makefile	/^LDFLAGS = $/;"	m
+LDFLAGS	./src/server/Makefile	/^LDFLAGS = $/;"	m
+LDRULE	./src/client/Makefile	/^LDRULE = $(LD) $(LDFLAGS) -o $@ $^$/;"	m
+LDRULE	./src/server/Makefile	/^LDRULE = $(LD) $(LDFLAGS) -o $@ $^$/;"	m
+OBJDIR	./src/client/Makefile	/^OBJDIR = ..\/..\/obj\/client$/;"	m
+OBJDIR	./src/server/Makefile	/^OBJDIR = ..\/..\/obj\/server$/;"	m
+OUTPUT	./src/client/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/client.exe$/;"	m
+OUTPUT	./src/server/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/server$/;"	m
+TARGET	./src/client/Makefile	/^TARGET = client$/;"	m
+TARGET	./src/server/Makefile	/^TARGET = server$/;"	m
+main	./src/client/main.c	/^int main(int argc, char* argv)$/;"	f	signature:(int argc, char* argv)
+main	./src/server/main.c	/^int main(int argc, char* argv)$/;"	f	signature:(int argc, char* argv)
