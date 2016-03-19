@@ -98,6 +98,8 @@ int main(int argc, char* argv)
 	map_insert(&map , "1651t6hbdrth", "th5d1rh6");
 	map_insert(&map , "rs5g12s651", "ser41g6s514");
 
+	map_remove(&map , "qqqq");
+
 	if(!check(map)) {
 		printf("Check failed\n");
 
@@ -105,7 +107,81 @@ int main(int argc, char* argv)
 		printf("check Succeeded!\n");
 	}
 
-	printf("%s\n", map_get(&map, "j2132516541ghj"));
+	map_remove(&map , "www");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "wwwwefwefa");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "asdadc");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "hdrh4164");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "j2132516541ghj");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "16541615");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "1651t6hbdrth");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	map_remove(&map , "rs5g12s651");
+
+	if(!check(map)) {
+		printf("Check failed\n");
+
+	} else {
+		printf("check Succeeded!\n");
+	}
+
+	if(map_get(&map, "wwwwefwefa") == NULL) {
+		printf("removed\n");
+	}
 
 	return 0;
 }

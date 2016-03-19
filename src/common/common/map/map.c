@@ -274,11 +274,14 @@ void* map_remove(pmap_t p_map, char* key)
 	if(p_y->p_left != NULL) {
 		p_x = p_y->p_left;
 
-	} else {
+	} else if(p_y->p_right != NULL) {
 		p_x = p_y->p_right;
+
 	}
 
-	p_x->p_parent = p_y->p_parent;
+	if(p_x != NULL) {
+		p_x->p_parent = p_y->p_parent;
+	}
 
 	if(p_y->p_parent == NULL) {
 		*p_map = p_x;
@@ -295,7 +298,17 @@ void* map_remove(pmap_t p_map, char* key)
 		p_node->value = p_y->value;
 	}
 
-	if(p_y->color == TREE_COLOR_BLACK) {
+	if(p_y->color == TREE_COLOR_BLACK && p_x == NULL) {
+		p_x = p_y->p_parent;
+		/*if(p_y->p_parent->p_left != NULL) {
+			p_x = p_y->p_parent->p_left;
+
+		} else {
+			p_x = p_y->p_parent->p_right;
+		}*/
+
+	} else if(p_y->color == TREE_COLOR_BLACK) {
+
 		//Fix the tree
 		while(p_x != *p_map && p_x->color == TREE_COLOR_BLACK) {
 			if(p_x == p_x->p_parent->p_left) {
