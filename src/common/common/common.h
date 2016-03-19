@@ -19,3 +19,5 @@
 
 #include "types.h"
 #include "map/map.h"
+
+#define	UNREFERENCED_PARAMER(x)	(void*)(x)

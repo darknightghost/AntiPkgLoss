@@ -18,16 +18,20 @@
 #pragma once
 #include "../types.h"
 
+#define	TREE_COLOR_BLACK		0
+#define	TREE_COLOR_RED			1
+
 typedef	struct	_rbtree_node {
 	struct	_rbtree_node*	p_parent;		//Parent node
 	struct	_rbtree_node*	p_left;			//Left child
 	struct	_rbtree_node*	p_right;		//Right child
+	unsigned long			color;			//Red or black
 	char*					key;			//Key
 	void*					value;			//Value
 } rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;
 
 bool	map_insert(pmap_t p_map, char* key, void* value);
 void*	map_get(pmap_t p_map, char* key);
-void*	map_set(pmap_t p_map, char* key, char* value);
+bool	map_set(pmap_t p_map, char* key, char* value);
 void*	map_remove(pmap_t p_map, char* key);
 void	map_destroy(pmap_t p_map);

@@ -36,9 +36,21 @@ OUTPUT	./src/client/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/client.exe$/;"	m
 OUTPUT	./src/server/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/server$/;"	m
 TARGET	./src/client/Makefile	/^TARGET = client$/;"	m
 TARGET	./src/server/Makefile	/^TARGET = server$/;"	m
+TREE_COLOR_BLACK	./src/client/common/common/map/map.h	21;"	d
+TREE_COLOR_BLACK	./src/common/common/map/map.h	21;"	d
+TREE_COLOR_BLACK	./src/server/common/common/map/map.h	21;"	d
+TREE_COLOR_RED	./src/client/common/common/map/map.h	22;"	d
+TREE_COLOR_RED	./src/common/common/map/map.h	22;"	d
+TREE_COLOR_RED	./src/server/common/common/map/map.h	22;"	d
+UNREFERENCED_PARAMER	./src/client/common/common/common.h	23;"	d
+UNREFERENCED_PARAMER	./src/common/common/common.h	23;"	d
+UNREFERENCED_PARAMER	./src/server/common/common/common.h	23;"	d
 _rbtree_node	./src/client/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
 _rbtree_node	./src/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
 _rbtree_node	./src/server/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
+_rbtree_node::color	./src/client/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::color	./src/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
+_rbtree_node::color	./src/server/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
 _rbtree_node::key	./src/client/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
 _rbtree_node::key	./src/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
 _rbtree_node::key	./src/server/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
@@ -60,12 +72,25 @@ bool	./src/common/common/types.h	/^	typedef	u8						bool;$/;"	t
 bool	./src/common/common/types.h	/^	typedef	u8					bool;$/;"	t
 bool	./src/server/common/common/types.h	/^	typedef	u8						bool;$/;"	t
 bool	./src/server/common/common/types.h	/^	typedef	u8					bool;$/;"	t
-false	./src/client/common/common/types.h	39;"	d
-false	./src/client/common/common/types.h	62;"	d
-false	./src/common/common/types.h	39;"	d
-false	./src/common/common/types.h	62;"	d
-false	./src/server/common/common/types.h	39;"	d
-false	./src/server/common/common/types.h	62;"	d
+check	./src/server/main.c	/^bool check(prbtree_node_t p_node)$/;"	f	signature:(prbtree_node_t p_node)
+color	./src/client/common/common/map/map.c	46;"	d	file:
+color	./src/client/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
+color	./src/common/common/map/map.c	46;"	d	file:
+color	./src/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
+color	./src/server/common/common/map/map.c	46;"	d	file:
+color	./src/server/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
+destroier	./src/client/common/common/types.h	/^typedef	void	(*destroier)(void*);$/;"	t
+destroier	./src/common/common/types.h	/^typedef	void	(*destroier)(void*);$/;"	t
+destroier	./src/server/common/common/types.h	/^typedef	void	(*destroier)(void*);$/;"	t
+false	./src/client/common/common/types.h	41;"	d
+false	./src/client/common/common/types.h	64;"	d
+false	./src/common/common/types.h	41;"	d
+false	./src/common/common/types.h	64;"	d
+false	./src/server/common/common/types.h	41;"	d
+false	./src/server/common/common/types.h	64;"	d
+grand_parent	./src/client/common/common/map/map.c	24;"	d	file:
+grand_parent	./src/common/common/map/map.c	24;"	d	file:
+grand_parent	./src/server/common/common/map/map.c	24;"	d	file:
 key	./src/client/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
 key	./src/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
 key	./src/server/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
@@ -93,23 +118,44 @@ le8	./src/common/common/types.h	/^	typedef	u8						le8;$/;"	t
 le8	./src/common/common/types.h	/^	typedef	u8					le8;$/;"	t
 le8	./src/server/common/common/types.h	/^	typedef	u8						le8;$/;"	t
 le8	./src/server/common/common/types.h	/^	typedef	u8					le8;$/;"	t
+left_rotate	./src/client/common/common/map/map.c	/^bool left_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+left_rotate	./src/client/common/common/map/map.c	/^static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
+left_rotate	./src/common/common/map/map.c	/^bool left_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+left_rotate	./src/common/common/map/map.c	/^static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
+left_rotate	./src/server/common/common/map/map.c	/^bool left_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+left_rotate	./src/server/common/common/map/map.c	/^static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
 main	./src/client/main.c	/^int main(int argc, char* argv)$/;"	f	signature:(int argc, char* argv)
 main	./src/server/main.c	/^int main(int argc, char* argv)$/;"	f	signature:(int argc, char* argv)
+map_destroy	./src/client/common/common/map/map.c	/^void	map_destroy(pmap_t p_map);$/;"	p	file:	signature:(pmap_t p_map)
 map_destroy	./src/client/common/common/map/map.h	/^void	map_destroy(pmap_t p_map);$/;"	p	signature:(pmap_t p_map)
+map_destroy	./src/common/common/map/map.c	/^void	map_destroy(pmap_t p_map);$/;"	p	file:	signature:(pmap_t p_map)
 map_destroy	./src/common/common/map/map.h	/^void	map_destroy(pmap_t p_map);$/;"	p	signature:(pmap_t p_map)
+map_destroy	./src/server/common/common/map/map.c	/^void	map_destroy(pmap_t p_map);$/;"	p	file:	signature:(pmap_t p_map)
 map_destroy	./src/server/common/common/map/map.h	/^void	map_destroy(pmap_t p_map);$/;"	p	signature:(pmap_t p_map)
+map_get	./src/client/common/common/map/map.c	/^void* map_get(pmap_t p_map, char* key)$/;"	f	signature:(pmap_t p_map, char* key)
 map_get	./src/client/common/common/map/map.h	/^void*	map_get(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_get	./src/common/common/map/map.c	/^void* map_get(pmap_t p_map, char* key)$/;"	f	signature:(pmap_t p_map, char* key)
 map_get	./src/common/common/map/map.h	/^void*	map_get(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_get	./src/server/common/common/map/map.c	/^void* map_get(pmap_t p_map, char* key)$/;"	f	signature:(pmap_t p_map, char* key)
 map_get	./src/server/common/common/map/map.h	/^void*	map_get(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_insert	./src/client/common/common/map/map.c	/^bool map_insert(pmap_t p_map, char* key, void* value)$/;"	f	signature:(pmap_t p_map, char* key, void* value)
 map_insert	./src/client/common/common/map/map.h	/^bool	map_insert(pmap_t p_map, char* key, void* value);$/;"	p	signature:(pmap_t p_map, char* key, void* value)
+map_insert	./src/common/common/map/map.c	/^bool map_insert(pmap_t p_map, char* key, void* value)$/;"	f	signature:(pmap_t p_map, char* key, void* value)
 map_insert	./src/common/common/map/map.h	/^bool	map_insert(pmap_t p_map, char* key, void* value);$/;"	p	signature:(pmap_t p_map, char* key, void* value)
+map_insert	./src/server/common/common/map/map.c	/^bool map_insert(pmap_t p_map, char* key, void* value)$/;"	f	signature:(pmap_t p_map, char* key, void* value)
 map_insert	./src/server/common/common/map/map.h	/^bool	map_insert(pmap_t p_map, char* key, void* value);$/;"	p	signature:(pmap_t p_map, char* key, void* value)
+map_remove	./src/client/common/common/map/map.c	/^void* map_remove(pmap_t p_map, char* key)$/;"	f	signature:(pmap_t p_map, char* key)
 map_remove	./src/client/common/common/map/map.h	/^void*	map_remove(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_remove	./src/common/common/map/map.c	/^void* map_remove(pmap_t p_map, char* key)$/;"	f	signature:(pmap_t p_map, char* key)
 map_remove	./src/common/common/map/map.h	/^void*	map_remove(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
+map_remove	./src/server/common/common/map/map.c	/^void* map_remove(pmap_t p_map, char* key)$/;"	f	signature:(pmap_t p_map, char* key)
 map_remove	./src/server/common/common/map/map.h	/^void*	map_remove(pmap_t p_map, char* key);$/;"	p	signature:(pmap_t p_map, char* key)
-map_set	./src/client/common/common/map/map.h	/^void*	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
-map_set	./src/common/common/map/map.h	/^void*	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
-map_set	./src/server/common/common/map/map.h	/^void*	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/client/common/common/map/map.c	/^bool map_set(pmap_t p_map, char* key, char* value)$/;"	f	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/client/common/common/map/map.h	/^bool	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/common/common/map/map.c	/^bool map_set(pmap_t p_map, char* key, char* value)$/;"	f	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/common/common/map/map.h	/^bool	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/server/common/common/map/map.c	/^bool map_set(pmap_t p_map, char* key, char* value)$/;"	f	signature:(pmap_t p_map, char* key, char* value)
+map_set	./src/server/common/common/map/map.h	/^bool	map_set(pmap_t p_map, char* key, char* value);$/;"	p	signature:(pmap_t p_map, char* key, char* value)
 map_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 map_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 map_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
@@ -134,6 +180,12 @@ rbtree_node_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_n
 rbtree_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 rbtree_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 rbtree_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+right_rotate	./src/client/common/common/map/map.c	/^bool right_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+right_rotate	./src/client/common/common/map/map.c	/^static	bool	right_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
+right_rotate	./src/common/common/map/map.c	/^bool right_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+right_rotate	./src/common/common/map/map.c	/^static	bool	right_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
+right_rotate	./src/server/common/common/map/map.c	/^bool right_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+right_rotate	./src/server/common/common/map/map.c	/^static	bool	right_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
 s16	./src/client/common/common/types.h	/^	typedef signed short			s16;$/;"	t
 s16	./src/client/common/common/types.h	/^	typedef signed short		s16;$/;"	t
 s16	./src/common/common/types.h	/^	typedef signed short			s16;$/;"	t
@@ -158,12 +210,15 @@ s8	./src/common/common/types.h	/^	typedef signed char				s8;$/;"	t
 s8	./src/common/common/types.h	/^	typedef signed char			s8;$/;"	t
 s8	./src/server/common/common/types.h	/^	typedef signed char				s8;$/;"	t
 s8	./src/server/common/common/types.h	/^	typedef signed char			s8;$/;"	t
-true	./src/client/common/common/types.h	38;"	d
-true	./src/client/common/common/types.h	61;"	d
-true	./src/common/common/types.h	38;"	d
-true	./src/common/common/types.h	61;"	d
-true	./src/server/common/common/types.h	38;"	d
-true	./src/server/common/common/types.h	61;"	d
+sibling	./src/client/common/common/map/map.c	36;"	d	file:
+sibling	./src/common/common/map/map.c	36;"	d	file:
+sibling	./src/server/common/common/map/map.c	36;"	d	file:
+true	./src/client/common/common/types.h	40;"	d
+true	./src/client/common/common/types.h	63;"	d
+true	./src/common/common/types.h	40;"	d
+true	./src/common/common/types.h	63;"	d
+true	./src/server/common/common/types.h	40;"	d
+true	./src/server/common/common/types.h	63;"	d
 u16	./src/client/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
 u16	./src/client/common/common/types.h	/^	typedef unsigned short		u16;$/;"	t
 u16	./src/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
@@ -188,6 +243,9 @@ u8	./src/common/common/types.h	/^	typedef	unsigned char			u8;$/;"	t
 u8	./src/common/common/types.h	/^	typedef	unsigned char		u8;$/;"	t
 u8	./src/server/common/common/types.h	/^	typedef	unsigned char			u8;$/;"	t
 u8	./src/server/common/common/types.h	/^	typedef	unsigned char		u8;$/;"	t
+uncle	./src/client/common/common/map/map.c	26;"	d	file:
+uncle	./src/common/common/map/map.c	26;"	d	file:
+uncle	./src/server/common/common/map/map.c	26;"	d	file:
 value	./src/client/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
 value	./src/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
 value	./src/server/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public

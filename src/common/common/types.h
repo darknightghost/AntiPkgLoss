@@ -17,6 +17,8 @@
 
 #pragma once
 
+typedef	void	(*destroier)(void*);
+
 #ifdef X86
 
 	typedef	unsigned char			u8;
