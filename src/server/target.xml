@@ -6,7 +6,7 @@
 			<ASFLAGS type="textbox">-m32 -c</ASFLAGS>
 			<ASRULE type="textbox">$(AS) $(ASFLAGS) -o $@ $&lt;</ASRULE>
 			<CC type="textbox">gcc</CC>	
-			<CFLAGS type="textbox">-m32 -c</CFLAGS>
+			<CFLAGS type="textbox">-m32 -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror</CFLAGS>
 			<CCRULE type="textbox">$(CC) $(CFLAGS) -o $@ $&lt;</CCRULE>
 			<LD type="textbox">gcc</LD>
 			<LDFLAGS type="textbox">-m32</LDFLAGS>
@@ -21,7 +21,7 @@
 			<ASFLAGS type="textbox">-c</ASFLAGS>
 			<ASRULE type="textbox">$(AS) $(ASFLAGS) -o $@ $&lt;</ASRULE>
 			<CC type="textbox">gcc</CC>	
-			<CFLAGS type="textbox">-c</CFLAGS>
+			<CFLAGS type="textbox">-c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror</CFLAGS>
 			<CCRULE type="textbox">$(CC) $(CFLAGS) -o $@ $&lt;</CCRULE>
 			<LD type="textbox">gcc</LD>
 			<LDFLAGS type="textbox"></LDFLAGS>
@@ -34,6 +34,7 @@
 	<menu>
 		<options text="Build Options">
 			<option macro="-g" text="Complie with symbols" type="checkbox" value="true"/>
+			<option macro="-DDEBUG" text="debug" type="checkbox" value="true"/>
 		</options>
 	</menu>
 </target>

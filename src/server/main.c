@@ -19,169 +19,54 @@
 #include <string.h>
 #include "common/common/common.h"
 
-bool check(prbtree_node_t p_node)
-{
-	if(p_node->p_parent == NULL && p_node->color != TREE_COLOR_BLACK) {
-		return false;
-	}
 
-	if(p_node->color == TREE_COLOR_RED) {
-		if(p_node->p_left != NULL) {
-			if(p_node->p_right == NULL) {
-				return false;
-			}
-
-			if(p_node->p_left->color == TREE_COLOR_RED) {
-				return false;
-			}
-
-			if(!check(p_node->p_left)) {
-				return false;
-			}
-
-			if(strcmp(p_node->p_left->key, p_node->key) >= 0) {
-				return false;
-			}
-		}
-
-		if(p_node->p_right != NULL) {
-			if(p_node->p_left == NULL) {
-				return  false;
-			}
-
-			if(p_node->p_right->color == TREE_COLOR_RED) {
-				return false;
-			}
-
-			if(!check(p_node->p_right)) {
-				return false;
-			}
-
-			if(strcmp(p_node->p_right->key, p_node->key) < 0) {
-				return false;
-			}
-		}
-	}
-
-	if(p_node->color == TREE_COLOR_BLACK) {
-		if(p_node->p_left == NULL && p_node->p_right != NULL) {
-			if(p_node->p_right->color != TREE_COLOR_RED
-			   || p_node->p_right->p_left != NULL
-			   || p_node->p_right->p_right != NULL) {
-				return false;
-			}
-		}
-
-		if(p_node->p_right == NULL && p_node->p_left != NULL) {
-			if(p_node->p_left->color != TREE_COLOR_RED
-			   || p_node->p_left->p_left != NULL
-			   || p_node->p_left->p_right != NULL) {
-				return false;
-			}
-		}
-
-	}
-
-	return true;
-}
-
-int main(int argc, char* argv)
+int main(int argc, char* argv[])
 {
 	map_t map = NULL;
 	map_insert(&map , "qqqq", "asdasdasda");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "www", "asdasdasda");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "wwwwefwefa", "asdasdasda");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "asdadc", "a54da654d");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "hdrh4164", "sf54df15");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "j2132516541ghj", "tg2h2");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "16541615", "a5414651465");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "1651t6hbdrth", "th5d1rh6");
+	CHK_MAP_BALANCE(&map);
 	map_insert(&map , "rs5g12s651", "ser41g6s514");
+	CHK_MAP_BALANCE(&map);
 
 	map_remove(&map , "qqqq");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "www");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "wwwwefwefa");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "asdadc");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "hdrh4164");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "j2132516541ghj");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "16541615");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "1651t6hbdrth");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
-
+	CHK_MAP_BALANCE(&map);
 	map_remove(&map , "rs5g12s651");
-
-	if(!check(map)) {
-		printf("Check failed\n");
-
-	} else {
-		printf("check Succeeded!\n");
-	}
+	CHK_MAP_BALANCE(&map);
 
 	if(map_get(&map, "wwwwefwefa") == NULL) {
 		printf("removed\n");
 	}
+
+	UNREFERENCED_PARAMER(argc);
+	UNREFERENCED_PARAMER(argv);
 
 	return 0;
 }

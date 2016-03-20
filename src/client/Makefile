@@ -1,10 +1,10 @@
 ARCH = amd64
 TARGET = client
 AS = i686-w64-mingw32-gcc
-ASFLAGS = -c -g -DAMD64
+ASFLAGS = -c -g -DDEBUG -DAMD64
 ASRULE = $(AS) $(ASFLAGS) -o $@ $<
 CC = i686-w64-mingw32-gcc
-CFLAGS = -c -g -DAMD64
+CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -g -DDEBUG -DAMD64
 CCRULE = $(CC) $(CFLAGS) -o $@ $<
 LD = i686-w64-mingw32-gcc
 LDFLAGS = 

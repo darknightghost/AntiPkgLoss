@@ -16,9 +16,12 @@
 */
 
 #include <stdio.h>
+#include "common/common/common.h"
 
-int main(int argc, char* argv)
+int main(int argc, char* argv[])
 {
 	printf("aaaaa\n");
 	return 0;
+	UNREFERENCED_PARAMER(argc);
+	UNREFERENCED_PARAMER(argv);
 }

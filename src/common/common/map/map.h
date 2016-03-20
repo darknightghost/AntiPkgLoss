@@ -21,6 +21,14 @@
 #define	TREE_COLOR_BLACK		0
 #define	TREE_COLOR_RED			1
 
+#ifdef	DEBUG
+	#define	CHK_MAP_BALANCE(x)	map_balance_chk((x))
+#endif	//	DEBUG
+
+#ifndef	DEBUG
+	#define	CHK_MAP_BALANCE(x)
+#endif	//!	DEBUG
+
 typedef	struct	_rbtree_node {
 	struct	_rbtree_node*	p_parent;		//Parent node
 	struct	_rbtree_node*	p_left;			//Left child
@@ -30,8 +38,10 @@ typedef	struct	_rbtree_node {
 	void*					value;			//Value
 } rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;
 
+#define	map_init(map)	((map) = NULL)
 bool	map_insert(pmap_t p_map, char* key, void* value);
 void*	map_get(pmap_t p_map, char* key);
 bool	map_set(pmap_t p_map, char* key, char* value);
 void*	map_remove(pmap_t p_map, char* key);
 void	map_destroy(pmap_t p_map);
+void	map_balance_chk(pmap_t p_map);

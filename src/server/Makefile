@@ -1,10 +1,10 @@
 ARCH = amd64
 TARGET = server
 AS = gcc
-ASFLAGS = -c -g -DAMD64
+ASFLAGS = -c -g -DDEBUG -DAMD64
 ASRULE = $(AS) $(ASFLAGS) -o $@ $<
 CC = gcc
-CFLAGS = -c -g -DAMD64
+CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -g -DDEBUG -DAMD64
 CCRULE = $(CC) $(CFLAGS) -o $@ $<
 LD = gcc
 LDFLAGS = 

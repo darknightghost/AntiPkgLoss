@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include "../common.h"
 #include "map.h"
 
@@ -47,8 +48,20 @@
                   ? TREE_COLOR_BLACK \
                   : TREE_COLOR_RED)
 
+#ifdef	DEBUG
+	#define	CHECK_TREE(map)	tree_check((map))
+#endif
+#ifndef	DEBUG
+	#define	CHECK_TREE(map)
+#endif
+
 static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);
 static	bool	right_rotate(pmap_t p_map, prbtree_node_t p_node);
+static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node);
+static	void	tree_check(prbtree_node_t p_node);
+static	void	check_node_balance(prbtree_node_t p_node,
+                                   int* p_black_num, int* p_max_black_num,
+                                   bool* p_end);
 
 
 bool map_insert(pmap_t p_map, char* key, void* value)
@@ -229,9 +242,6 @@ bool map_set(pmap_t p_map, char* key, char* value)
 void* map_remove(pmap_t p_map, char* key)
 {
 	prbtree_node_t p_node;
-	prbtree_node_t p_x;
-	prbtree_node_t p_y;
-	prbtree_node_t p_w;
 	int cmp_result;
 	void* ret;
 
@@ -260,123 +270,39 @@ void* map_remove(pmap_t p_map, char* key)
 	free(p_node->key);
 
 	//Remove node
-	if(p_node->p_left == NULL || p_node->p_right == NULL) {
-		p_y = p_node;
-
-	} else {
-		p_y = p_node->p_left;
-
-		while(p_y->p_right != NULL) {
-			p_y = p_y->p_right;
-		}
-	}
-
-	if(p_y->p_left != NULL) {
-		p_x = p_y->p_left;
-
-	} else if(p_y->p_right != NULL) {
-		p_x = p_y->p_right;
-
-	}
-
-	if(p_x != NULL) {
-		p_x->p_parent = p_y->p_parent;
-	}
-
-	if(p_y->p_parent == NULL) {
-		*p_map = p_x;
-
-	} else if(p_y == p_y->p_parent->p_left) {
-		p_y->p_parent->p_left = p_x;
-
-	} else {
-		p_y->p_parent->p_right = p_x;
-	}
-
-	if(p_y != p_node) {
-		p_node->key = p_y->key;
-		p_node->value = p_y->value;
-	}
-
-	if(p_y->color == TREE_COLOR_BLACK && p_x == NULL) {
-		p_x = p_y->p_parent;
-		/*if(p_y->p_parent->p_left != NULL) {
-			p_x = p_y->p_parent->p_left;
-
-		} else {
-			p_x = p_y->p_parent->p_right;
-		}*/
-
-	} else if(p_y->color == TREE_COLOR_BLACK) {
-
-		//Fix the tree
-		while(p_x != *p_map && p_x->color == TREE_COLOR_BLACK) {
-			if(p_x == p_x->p_parent->p_left) {
-				p_w = p_x->p_parent->p_right;
-
-				if(p_w->color == TREE_COLOR_RED) {
-					p_w->color = TREE_COLOR_BLACK;
-					p_x->p_parent->color = TREE_COLOR_RED;
-					left_rotate(p_map, p_x->p_parent);
-					p_w = p_x->p_parent->p_right;
-				}
-
-				if(p_w->p_left->color == TREE_COLOR_BLACK
-				   && p_w->p_right->color == TREE_COLOR_BLACK) {
-					p_w->color == TREE_COLOR_RED;
-					p_x = p_x->p_parent;
-
-				} else if(p_w->p_right->color == TREE_COLOR_BLACK) {
-					p_w->p_left->color = TREE_COLOR_BLACK;
-					p_w->color = TREE_COLOR_RED;
-					right_rotate(p_map, p_w);
-					p_w = p_x->p_parent->p_right;
-				}
-
-				p_w->color = p_x->p_parent->color;
-				p_x->p_parent->color = TREE_COLOR_BLACK;
-				p_w->p_right->color = TREE_COLOR_BLACK;
-				left_rotate(p_map, p_x->p_parent);
-				p_x = *p_map;
-
-			} else {
-				p_w = p_x->p_parent->p_left;
-
-				if(p_w->color == TREE_COLOR_RED) {
-					p_w->color = TREE_COLOR_BLACK;
-					p_x->p_parent->color = TREE_COLOR_RED;
-					right_rotate(p_map, p_x->p_parent);
-					p_w = p_x->p_parent->p_left;
-				}
-
-				if(p_w->p_right->color == TREE_COLOR_BLACK
-				   && p_w->p_left->color == TREE_COLOR_BLACK) {
-					p_w->color == TREE_COLOR_RED;
-					p_x = p_x->p_parent;
-
-				} else if(p_w->p_left->color == TREE_COLOR_BLACK) {
-					p_w->p_right->color = TREE_COLOR_BLACK;
-					p_w->color = TREE_COLOR_RED;
-					left_rotate(p_map, p_w);
-					p_w = p_x->p_parent->p_left;
-				}
-
-				p_w->color = p_x->p_parent->color;
-				p_x->p_parent->color = TREE_COLOR_BLACK;
-				p_w->p_left->color = TREE_COLOR_BLACK;
-				right_rotate(p_map, p_x->p_parent);
-				p_x = *p_map;
-			}
-		}
-
-	}
-
-	free(p_y);
-
+	UNREFERENCED_PARAMER(remove_rebalance);
 	return ret;
 }
 
-void	map_destroy(pmap_t p_map);
+void map_destroy(pmap_t p_map)
+{
+	if((*p_map)->p_left != NULL) {
+		map_destroy(&((*p_map)->p_left));
+	}
+
+	if((*p_map)->p_right != NULL) {
+		map_destroy(&((*p_map)->p_right));
+	}
+
+	free((*p_map)->key);
+	free(*p_map);
+	*p_map = NULL;
+	return;
+}
+
+void map_balance_chk(pmap_t p_map)
+{
+	int black_num;
+	int max_black_num;
+	bool end;
+
+	black_num = 0;
+	max_black_num = 0;
+	end = false;
+
+	check_node_balance(*p_map, &black_num, &max_black_num, &end);
+	return;
+}
 
 bool left_rotate(pmap_t p_map, prbtree_node_t p_node)
 {
@@ -404,7 +330,7 @@ bool left_rotate(pmap_t p_map, prbtree_node_t p_node)
 	if(p_y->p_parent == NULL) {
 		*p_map = p_y;
 
-	} else if(p_node = p_y->p_parent->p_left) {
+	} else if(p_node == p_y->p_parent->p_left) {
 		p_y->p_parent->p_left = p_y;
 
 	} else {
@@ -440,12 +366,175 @@ bool right_rotate(pmap_t p_map, prbtree_node_t p_node)
 	if(p_y->p_parent == NULL) {
 		*p_map = p_y;
 
-	} else if(p_node = p_y->p_parent->p_left) {
+	} else if(p_node == p_y->p_parent->p_left) {
 		p_y->p_parent->p_left = p_y;
 
 	} else {
 		p_y->p_parent->p_right = p_y;
 	}
 
+	CHECK_TREE(p_y);
 	return true;
 }
+
+void tree_check(prbtree_node_t p_node)
+{
+	if(p_node->p_left != NULL) {
+		assert(p_node->p_left->p_parent == p_node);
+	}
+
+	if(p_node->p_right != NULL) {
+		assert(p_node->p_right->p_parent == p_node);
+	}
+}
+
+void remove_rebalance(pmap_t p_map, prbtree_node_t p_node)
+{
+	prbtree_node_t p_sibling;
+	prbtree_node_t p_parent;
+
+	while(p_node->color == TREE_COLOR_BLACK && p_node->p_parent != NULL) {
+		p_parent = p_node->p_parent;
+
+		if(p_node == p_parent->p_left) {
+			p_sibling = p_parent->p_right;
+
+			if(p_sibling->color == TREE_COLOR_RED) {
+				//Case 1:sibling node is red
+				p_parent->color = TREE_COLOR_RED;
+				p_sibling->color = TREE_COLOR_BLACK;
+				left_rotate(p_map, p_parent);
+				p_sibling = p_parent->p_right;
+			}
+
+			CHECK_TREE(*p_map);
+
+			if(color(p_sibling->p_left) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_right) == TREE_COLOR_BLACK) {
+				//Case 2:sibling is black,Its childres are black
+				p_sibling->color = TREE_COLOR_RED;
+				p_node = p_parent;
+				CHECK_TREE(*p_map);
+				continue;
+			}
+
+			if(color(p_sibling->p_right) == TREE_COLOR_BLACK) {
+				//Case 3:right child of sibling is black,lefi is red
+				p_sibling->p_left->color = TREE_COLOR_BLACK;
+				p_sibling->color = TREE_COLOR_RED;
+				right_rotate(p_map, p_sibling);
+				p_sibling = p_parent->p_right;
+			}
+
+			CHECK_TREE(*p_map);
+			//Case 4:right child of sibling is red
+			p_sibling->p_right->color = TREE_COLOR_BLACK;
+			p_sibling->color = p_parent->color;
+			p_parent->color = TREE_COLOR_BLACK;
+			CHECK_TREE(*p_map);
+			left_rotate(p_map, p_parent);
+			CHECK_TREE(*p_map);
+			break;
+
+		} else {
+			p_sibling = p_parent->p_left;
+
+			if(p_sibling->color == TREE_COLOR_RED) {
+				//Case 1:sibling node is red
+				p_parent->color = TREE_COLOR_RED;
+				p_sibling->color = TREE_COLOR_BLACK;
+				right_rotate(p_map, p_parent);
+				p_sibling = p_parent->p_left;
+				CHECK_TREE(*p_map);
+			}
+
+			if(color(p_sibling->p_right) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_left) == TREE_COLOR_BLACK) {
+				//Case 2:sibling is black,Its childres are black
+				p_sibling->color = TREE_COLOR_RED;
+				p_node = p_parent;
+				CHECK_TREE(*p_map);
+				continue;
+			}
+
+			if(color(p_sibling->p_left) == TREE_COLOR_BLACK) {
+				//Case 3:left child of sibling is black,lefi is red
+				p_sibling->p_right->color = TREE_COLOR_BLACK;
+				p_sibling->color = TREE_COLOR_RED;
+				left_rotate(p_map, p_sibling);
+				p_sibling = p_parent->p_left;
+				CHECK_TREE(*p_map);
+			}
+
+			//Case 4:left child of sibling is red
+			p_sibling->p_left->color = TREE_COLOR_BLACK;
+			p_sibling->color = p_parent->color;
+			p_parent->color = TREE_COLOR_BLACK;
+			CHECK_TREE(*p_map);
+			right_rotate(p_map, p_parent);
+			CHECK_TREE(*p_map);
+			break;
+		}
+	}
+}
+
+void check_node_balance(prbtree_node_t p_node,
+                        int* p_black_num, int* p_max_black_num,
+                        bool * p_end)
+{
+	if(p_node->color == TREE_COLOR_BLACK) {
+		(*p_black_num)++;
+	}
+
+	if(p_node->p_parent == NULL) {
+		assert(p_node->color == TREE_COLOR_BLACK);
+	}
+
+	if(p_node->p_left == NULL) {
+		if(*p_end == false) {
+			*p_end = true;
+			*p_max_black_num = *p_black_num;
+
+		} else {
+			assert(*p_max_black_num == *p_black_num);
+		}
+
+	} else {
+		if(p_node->color == TREE_COLOR_RED) {
+			assert(p_node->p_left->color == TREE_COLOR_BLACK);
+		}
+
+		assert(p_node->p_left->p_parent == p_node);
+		check_node_balance(p_node->p_left,
+		                   p_black_num, p_max_black_num,
+		                   p_end);
+	}
+
+	if(p_node->p_right == NULL) {
+		if(*p_end == false) {
+			*p_end = true;
+			*p_max_black_num = *p_black_num;
+
+		} else {
+			assert(*p_max_black_num == *p_black_num);
+		}
+
+	} else {
+		if(p_node->color == TREE_COLOR_RED) {
+			assert(p_node->p_right->color == TREE_COLOR_BLACK);
+		}
+
+		assert(p_node->p_right->p_parent == p_node);
+		check_node_balance(p_node->p_right,
+		                   p_black_num, p_max_black_num,
+		                   p_end);
+	}
+
+	if(p_node->color == TREE_COLOR_BLACK) {
+		(*p_black_num)--;
+	}
+
+	return;
+}
+
+

@@ -14,3 +14,13 @@
 	  You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <stdlib.h>
+#include "../common.h"
+#include "list.h"
+
+plist_node_t list_insert_before(plist_t p_list, plist_node_t p_position,
+                                void* p_item);
+plist_node_t list_insert_after(plist_t p_list, plist_node_t p_position,
+                               void* p_item);
+void list_remove(plist_t p_list, plist_node_t p_node);
