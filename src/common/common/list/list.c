@@ -20,7 +20,107 @@
 #include "list.h"
 
 plist_node_t list_insert_before(plist_t p_list, plist_node_t p_position,
-                                void* p_item);
+                                void* p_item)
+{
+	plist_node_t p_new_node;
+
+	//Alloc new node
+	p_new_node = malloc(sizeof(list_node_t));
+
+	if(p_new_node != NULL) {
+		return NULL;
+	}
+
+	p_new_node->p_item = p_item;
+
+	//Insert new node
+	if(p_position == NULL) {
+		//Insert to the begining of the list
+		if(*p_list == NULL) {
+			//The list is empty
+			p_new_node->p_prev = p_new_node;
+			p_new_node->p_next = p_new_node;
+			*p_list = p_new_node;
+
+		} else {
+			//The list is not empty
+			p_new_node->p_next = *p_list;
+			p_new_node->p_prev = (*p_list)->p_prev;
+			p_new_node->p_prev->p_next = p_new_node;
+			p_new_node->p_next->p_prev = p_new_node;
+			*p_list = p_new_node;
+		}
+
+	} else {
+		p_new_node->p_prev = p_position->p_prev;
+		p_new_node->p_next = p_position->p_next;
+		p_new_node->p_prev->p_next = p_new_node;
+		p_new_node->p_next->p_prev = p_new_node;
+
+		if(p_position == *p_list) {
+			*p_list = p_position;
+		}
+	}
+
+	return p_new_node;
+}
+
 plist_node_t list_insert_after(plist_t p_list, plist_node_t p_position,
-                               void* p_item);
-void list_remove(plist_t p_list, plist_node_t p_node);
+                               void* p_item)
+{
+	plist_node_t p_new_node;
+
+	//Alloc new node
+	p_new_node = malloc(sizeof(list_node_t));
+
+	if(p_new_node != NULL) {
+		return NULL;
+	}
+
+	p_new_node->p_item = p_item;
+
+	//Insert new node
+	if(p_position == NULL) {
+		//Insert to the end of the list
+		if(*p_list == NULL) {
+			//The list is empty
+			p_new_node->p_prev = p_new_node;
+			p_new_node->p_next = p_new_node;
+			*p_list = p_new_node;
+
+		} else {
+			//The list is not empty
+			p_new_node->p_next = *p_list;
+			p_new_node->p_prev = (*p_list)->p_prev;
+			p_new_node->p_prev->p_next = p_new_node;
+			p_new_node->p_next->p_prev = p_new_node;
+		}
+
+	} else {
+		p_new_node->p_prev = p_position;
+		p_new_node->p_next = p_position->p_next;
+		p_new_node->p_next->p_prev = p_new_node;
+		p_new_node->p_prev->p_next = p_new_node;
+	}
+
+	return p_new_node;
+}
+
+void list_remove(plist_t p_list, plist_node_t p_node)
+{
+	p_node->p_prev->p_next = p_node->p_next;
+	p_node->p_next->p_prev = p_node->p_prev;
+
+	if(p_node == *p_list) {
+		if(p_node->p_next == p_node) {
+			*p_list = NULL;
+
+		} else {
+			*p_list = p_node->p_next;
+		}
+	}
+
+	free(p_node);
+
+	return;
+}
