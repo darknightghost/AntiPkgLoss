@@ -17,8 +17,5 @@
 
 #pragma once
 
-#include "types.h"
-#include "map/map.h"
-#include "ini/ini.h"
-
-#define	UNREFERENCED_PARAMER(x)	(void)(x)
+#define	MAX_PKG_SIZE		512
+#include "connection/connection.h"

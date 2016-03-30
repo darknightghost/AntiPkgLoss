@@ -20,7 +20,9 @@
 
 int main(int argc, char* argv[])
 {
-	printf("aaaaa\n");
+	//Load config
+	//Call network module
+	//Execute game
 	return 0;
 	UNREFERENCED_PARAMER(argc);
 	UNREFERENCED_PARAMER(argv);

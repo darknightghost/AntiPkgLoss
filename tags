@@ -36,16 +36,46 @@ DEP	./src/client/Makefile	/^DEP = i686-w64-mingw32-gcc$/;"	m
 DEP	./src/server/Makefile	/^DEP = gcc$/;"	m
 DEPRULE	./src/client/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf("%s%s\\n","$(OBJDIR)\/$(ARCH)\/",$$0)} NR != 1 {print $$0}' > $@; fi$/;"	m
 DEPRULE	./src/server/Makefile	/^DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf("%s%s\\n","$(OBJDIR)\/$(ARCH)\/",$$0)} NR != 1 {print $$0}' > $@; fi$/;"	m
+INI_LINE_BLANK	./src/client/common/common/ini/ini.h	27;"	d
+INI_LINE_BLANK	./src/common/common/ini/ini.h	27;"	d
+INI_LINE_BLANK	./src/server/common/common/ini/ini.h	27;"	d
+INI_LINE_COMMENT	./src/client/common/common/ini/ini.h	26;"	d
+INI_LINE_COMMENT	./src/common/common/ini/ini.h	26;"	d
+INI_LINE_COMMENT	./src/server/common/common/ini/ini.h	26;"	d
+INI_LINE_KEY	./src/client/common/common/ini/ini.h	25;"	d
+INI_LINE_KEY	./src/common/common/ini/ini.h	25;"	d
+INI_LINE_KEY	./src/server/common/common/ini/ini.h	25;"	d
+INI_LINE_SECTION	./src/client/common/common/ini/ini.h	24;"	d
+INI_LINE_SECTION	./src/common/common/ini/ini.h	24;"	d
+INI_LINE_SECTION	./src/server/common/common/ini/ini.h	24;"	d
 LD	./src/client/Makefile	/^LD = i686-w64-mingw32-gcc$/;"	m
 LD	./src/server/Makefile	/^LD = gcc$/;"	m
 LDFLAGS	./src/client/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	./src/server/Makefile	/^LDFLAGS = $/;"	m
 LDRULE	./src/client/Makefile	/^LDRULE = $(LD) $(LDFLAGS) -o $@ $^$/;"	m
 LDRULE	./src/server/Makefile	/^LDRULE = $(LD) $(LDFLAGS) -o $@ $^$/;"	m
+MAX_PKG_SIZE	./src/client/common/protocol/protocol.h	20;"	d
+MAX_PKG_SIZE	./src/common/protocol/protocol.h	20;"	d
+MAX_PKG_SIZE	./src/server/common/protocol/protocol.h	20;"	d
 OBJDIR	./src/client/Makefile	/^OBJDIR = ..\/..\/obj\/client$/;"	m
 OBJDIR	./src/server/Makefile	/^OBJDIR = ..\/..\/obj\/server$/;"	m
 OUTPUT	./src/client/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/client.exe$/;"	m
 OUTPUT	./src/server/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/server$/;"	m
+PKG_TYPE_CONNECT	./src/client/common/protocol/connection/connection.h	23;"	d
+PKG_TYPE_CONNECT	./src/common/protocol/connection/connection.h	23;"	d
+PKG_TYPE_CONNECT	./src/server/common/protocol/connection/connection.h	23;"	d
+PKG_TYPE_DATA	./src/client/common/protocol/connection/connection.h	27;"	d
+PKG_TYPE_DATA	./src/common/protocol/connection/connection.h	27;"	d
+PKG_TYPE_DATA	./src/server/common/protocol/connection/connection.h	27;"	d
+PKG_TYPE_HEARTBEAT	./src/client/common/protocol/connection/connection.h	26;"	d
+PKG_TYPE_HEARTBEAT	./src/common/protocol/connection/connection.h	26;"	d
+PKG_TYPE_HEARTBEAT	./src/server/common/protocol/connection/connection.h	26;"	d
+PKG_TYPE_REPLY	./src/client/common/protocol/connection/connection.h	24;"	d
+PKG_TYPE_REPLY	./src/common/protocol/connection/connection.h	24;"	d
+PKG_TYPE_REPLY	./src/server/common/protocol/connection/connection.h	24;"	d
+PKG_TYPE_RESEND	./src/client/common/protocol/connection/connection.h	25;"	d
+PKG_TYPE_RESEND	./src/common/protocol/connection/connection.h	25;"	d
+PKG_TYPE_RESEND	./src/server/common/protocol/connection/connection.h	25;"	d
 TARGET	./src/client/Makefile	/^TARGET = client$/;"	m
 TARGET	./src/server/Makefile	/^TARGET = server$/;"	m
 TREE_COLOR_BLACK	./src/client/common/common/map/map.h	21;"	d
@@ -54,9 +84,75 @@ TREE_COLOR_BLACK	./src/server/common/common/map/map.h	21;"	d
 TREE_COLOR_RED	./src/client/common/common/map/map.h	22;"	d
 TREE_COLOR_RED	./src/common/common/map/map.h	22;"	d
 TREE_COLOR_RED	./src/server/common/common/map/map.h	22;"	d
-UNREFERENCED_PARAMER	./src/client/common/common/common.h	23;"	d
-UNREFERENCED_PARAMER	./src/common/common/common.h	23;"	d
-UNREFERENCED_PARAMER	./src/server/common/common/common.h	23;"	d
+UNREFERENCED_PARAMER	./src/client/common/common/common.h	24;"	d
+UNREFERENCED_PARAMER	./src/common/common/common.h	24;"	d
+UNREFERENCED_PARAMER	./src/server/common/common/common.h	24;"	d
+_connection	./src/client/common/protocol/connection/connection.h	/^typedef	struct	_connection {$/;"	s
+_connection	./src/common/protocol/connection/connection.h	/^typedef	struct	_connection {$/;"	s
+_connection	./src/server/common/protocol/connection/connection.h	/^typedef	struct	_connection {$/;"	s
+_connection::buf	./src/client/common/protocol/connection/connection.h	/^	u8*						buf;$/;"	m	struct:_connection	access:public
+_connection::buf	./src/common/protocol/connection/connection.h	/^	u8*						buf;$/;"	m	struct:_connection	access:public
+_connection::buf	./src/server/common/protocol/connection/connection.h	/^	u8*						buf;$/;"	m	struct:_connection	access:public
+_connection::dest_addr	./src/client/common/protocol/connection/connection.h	/^	struct	sockaddr_in		dest_addr;$/;"	m	struct:_connection	typeref:struct:_connection::sockaddr_in	access:public
+_connection::dest_addr	./src/common/protocol/connection/connection.h	/^	struct	sockaddr_in		dest_addr;$/;"	m	struct:_connection	typeref:struct:_connection::sockaddr_in	access:public
+_connection::dest_addr	./src/server/common/protocol/connection/connection.h	/^	struct	sockaddr_in		dest_addr;$/;"	m	struct:_connection	typeref:struct:_connection::sockaddr_in	access:public
+_connection::id	./src/client/common/protocol/connection/connection.h	/^	u32						id;$/;"	m	struct:_connection	access:public
+_connection::id	./src/common/protocol/connection/connection.h	/^	u32						id;$/;"	m	struct:_connection	access:public
+_connection::id	./src/server/common/protocol/connection/connection.h	/^	u32						id;$/;"	m	struct:_connection	access:public
+_connection::pkg_id	./src/client/common/protocol/connection/connection.h	/^	u32						pkg_id;$/;"	m	struct:_connection	access:public
+_connection::pkg_id	./src/common/protocol/connection/connection.h	/^	u32						pkg_id;$/;"	m	struct:_connection	access:public
+_connection::pkg_id	./src/server/common/protocol/connection/connection.h	/^	u32						pkg_id;$/;"	m	struct:_connection	access:public
+_ini_comment	./src/client/common/common/ini/ini.h	/^typedef	struct	_ini_comment {$/;"	s
+_ini_comment	./src/common/common/ini/ini.h	/^typedef	struct	_ini_comment {$/;"	s
+_ini_comment	./src/server/common/common/ini/ini.h	/^typedef	struct	_ini_comment {$/;"	s
+_ini_comment::comment	./src/client/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
+_ini_comment::comment	./src/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
+_ini_comment::comment	./src/server/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
+_ini_comment::line	./src/client/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_comment	access:public
+_ini_comment::line	./src/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_comment	access:public
+_ini_comment::line	./src/server/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_comment	access:public
+_ini_file_info	./src/client/common/common/ini/ini.h	/^typedef struct	_ini_file_info {$/;"	s
+_ini_file_info	./src/common/common/ini/ini.h	/^typedef struct	_ini_file_info {$/;"	s
+_ini_file_info	./src/server/common/common/ini/ini.h	/^typedef struct	_ini_file_info {$/;"	s
+_ini_file_info::fp	./src/client/common/common/ini/ini.h	/^	FILE*	fp;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::fp	./src/common/common/ini/ini.h	/^	FILE*	fp;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::fp	./src/server/common/common/ini/ini.h	/^	FILE*	fp;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::path	./src/client/common/common/ini/ini.h	/^	char*	path;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::path	./src/common/common/ini/ini.h	/^	char*	path;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::path	./src/server/common/common/ini/ini.h	/^	char*	path;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::sections	./src/client/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::sections	./src/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+_ini_file_info::sections	./src/server/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+_ini_key	./src/client/common/common/ini/ini.h	/^typedef	struct	_ini_key {$/;"	s
+_ini_key	./src/common/common/ini/ini.h	/^typedef	struct	_ini_key {$/;"	s
+_ini_key	./src/server/common/common/ini/ini.h	/^typedef	struct	_ini_key {$/;"	s
+_ini_key::key_name	./src/client/common/common/ini/ini.h	/^	char*		key_name;$/;"	m	struct:_ini_key	access:public
+_ini_key::key_name	./src/common/common/ini/ini.h	/^	char*		key_name;$/;"	m	struct:_ini_key	access:public
+_ini_key::key_name	./src/server/common/common/ini/ini.h	/^	char*		key_name;$/;"	m	struct:_ini_key	access:public
+_ini_key::line	./src/client/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_key	access:public
+_ini_key::line	./src/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_key	access:public
+_ini_key::line	./src/server/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_key	access:public
+_ini_key::value	./src/client/common/common/ini/ini.h	/^	char*		value;$/;"	m	struct:_ini_key	access:public
+_ini_key::value	./src/common/common/ini/ini.h	/^	char*		value;$/;"	m	struct:_ini_key	access:public
+_ini_key::value	./src/server/common/common/ini/ini.h	/^	char*		value;$/;"	m	struct:_ini_key	access:public
+_ini_line	./src/client/common/common/ini/ini.h	/^typedef	struct	_ini_line {$/;"	s
+_ini_line	./src/common/common/ini/ini.h	/^typedef	struct	_ini_line {$/;"	s
+_ini_line	./src/server/common/common/ini/ini.h	/^typedef	struct	_ini_line {$/;"	s
+_ini_line::type	./src/client/common/common/ini/ini.h	/^	int	type;$/;"	m	struct:_ini_line	access:public
+_ini_line::type	./src/common/common/ini/ini.h	/^	int	type;$/;"	m	struct:_ini_line	access:public
+_ini_line::type	./src/server/common/common/ini/ini.h	/^	int	type;$/;"	m	struct:_ini_line	access:public
+_ini_section	./src/client/common/common/ini/ini.h	/^typedef	struct	_ini_section {$/;"	s
+_ini_section	./src/common/common/ini/ini.h	/^typedef	struct	_ini_section {$/;"	s
+_ini_section	./src/server/common/common/ini/ini.h	/^typedef	struct	_ini_section {$/;"	s
+_ini_section::keys	./src/client/common/common/ini/ini.h	/^	list_t		keys;$/;"	m	struct:_ini_section	access:public
+_ini_section::keys	./src/common/common/ini/ini.h	/^	list_t		keys;$/;"	m	struct:_ini_section	access:public
+_ini_section::keys	./src/server/common/common/ini/ini.h	/^	list_t		keys;$/;"	m	struct:_ini_section	access:public
+_ini_section::line	./src/client/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_section	access:public
+_ini_section::line	./src/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_section	access:public
+_ini_section::line	./src/server/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_section	access:public
+_ini_section::section_name	./src/client/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	struct:_ini_section	access:public
+_ini_section::section_name	./src/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	struct:_ini_section	access:public
+_ini_section::section_name	./src/server/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	struct:_ini_section	access:public
 _list_node	./src/client/common/common/list/list.h	/^typedef	struct	_list_node {$/;"	s
 _list_node	./src/common/common/list/list.h	/^typedef	struct	_list_node {$/;"	s
 _list_node	./src/server/common/common/list/list.h	/^typedef	struct	_list_node {$/;"	s
@@ -69,6 +165,33 @@ _list_node::p_next	./src/server/common/common/list/list.h	/^	struct	_list_node*	
 _list_node::p_prev	./src/client/common/common/list/list.h	/^	struct	_list_node*		p_prev;$/;"	m	struct:_list_node	typeref:struct:_list_node::_list_node	access:public
 _list_node::p_prev	./src/common/common/list/list.h	/^	struct	_list_node*		p_prev;$/;"	m	struct:_list_node	typeref:struct:_list_node::_list_node	access:public
 _list_node::p_prev	./src/server/common/common/list/list.h	/^	struct	_list_node*		p_prev;$/;"	m	struct:_list_node	typeref:struct:_list_node::_list_node	access:public
+_pkg	./src/client/common/protocol/connection/connection.h	/^typedef	union	_pkg {$/;"	u
+_pkg	./src/common/protocol/connection/connection.h	/^typedef	union	_pkg {$/;"	u
+_pkg	./src/server/common/protocol/connection/connection.h	/^typedef	union	_pkg {$/;"	u
+_pkg::__anon1::data	./src/client/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon1	access:public
+_pkg::__anon1::head	./src/client/common/protocol/connection/connection.h	/^		pkg_head_t	head;$/;"	m	struct:_pkg::__anon1	access:public
+_pkg::__anon2::data	./src/server/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon2	access:public
+_pkg::__anon2::head	./src/server/common/protocol/connection/connection.h	/^		pkg_head_t	head;$/;"	m	struct:_pkg::__anon2	access:public
+_pkg::__anon3::data	./src/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon3	access:public
+_pkg::__anon3::head	./src/common/protocol/connection/connection.h	/^		pkg_head_t	head;$/;"	m	struct:_pkg::__anon3	access:public
+_pkg::buf	./src/client/common/protocol/connection/connection.h	/^	u8			buf[];$/;"	m	union:_pkg	access:public
+_pkg::buf	./src/common/protocol/connection/connection.h	/^	u8			buf[];$/;"	m	union:_pkg	access:public
+_pkg::buf	./src/server/common/protocol/connection/connection.h	/^	u8			buf[];$/;"	m	union:_pkg	access:public
+_pkg_head	./src/client/common/protocol/connection/connection.h	/^typedef	struct	_pkg_head {$/;"	s
+_pkg_head	./src/common/protocol/connection/connection.h	/^typedef	struct	_pkg_head {$/;"	s
+_pkg_head	./src/server/common/protocol/connection/connection.h	/^typedef	struct	_pkg_head {$/;"	s
+_pkg_head::checksum	./src/client/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::checksum	./src/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::checksum	./src/server/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::id	./src/client/common/protocol/connection/connection.h	/^	u32		id;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::id	./src/common/protocol/connection/connection.h	/^	u32		id;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::id	./src/server/common/protocol/connection/connection.h	/^	u32		id;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::size	./src/client/common/protocol/connection/connection.h	/^	u32		size;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::size	./src/common/protocol/connection/connection.h	/^	u32		size;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::size	./src/server/common/protocol/connection/connection.h	/^	u32		size;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::type	./src/client/common/protocol/connection/connection.h	/^	u32		type;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::type	./src/common/protocol/connection/connection.h	/^	u32		type;$/;"	m	struct:_pkg_head	access:public
+_pkg_head::type	./src/server/common/protocol/connection/connection.h	/^	u32		type;$/;"	m	struct:_pkg_head	access:public
 _rbtree_node	./src/client/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
 _rbtree_node	./src/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
 _rbtree_node	./src/server/common/common/map/map.h	/^typedef	struct	_rbtree_node {$/;"	s
@@ -90,24 +213,78 @@ _rbtree_node::p_right	./src/server/common/common/map/map.h	/^	struct	_rbtree_nod
 _rbtree_node::value	./src/client/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
 _rbtree_node::value	./src/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
 _rbtree_node::value	./src/server/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+add_blank	./src/client/common/common/ini/ini.c	/^static	void			add_blank(plist_t p_list);$/;"	p	file:	signature:(plist_t p_list)
+add_blank	./src/client/common/common/ini/ini.c	/^void add_blank(plist_t p_list)$/;"	f	signature:(plist_t p_list)
+add_blank	./src/common/common/ini/ini.c	/^static	void			add_blank(plist_t p_list);$/;"	p	file:	signature:(plist_t p_list)
+add_blank	./src/common/common/ini/ini.c	/^void add_blank(plist_t p_list)$/;"	f	signature:(plist_t p_list)
+add_blank	./src/server/common/common/ini/ini.c	/^static	void			add_blank(plist_t p_list);$/;"	p	file:	signature:(plist_t p_list)
+add_blank	./src/server/common/common/ini/ini.c	/^void add_blank(plist_t p_list)$/;"	f	signature:(plist_t p_list)
+add_comment	./src/client/common/common/ini/ini.c	/^static	void			add_comment(plist_t p_list, char* comment);$/;"	p	file:	signature:(plist_t p_list, char* comment)
+add_comment	./src/client/common/common/ini/ini.c	/^void add_comment(plist_t p_list, char* comment)$/;"	f	signature:(plist_t p_list, char* comment)
+add_comment	./src/common/common/ini/ini.c	/^static	void			add_comment(plist_t p_list, char* comment);$/;"	p	file:	signature:(plist_t p_list, char* comment)
+add_comment	./src/common/common/ini/ini.c	/^void add_comment(plist_t p_list, char* comment)$/;"	f	signature:(plist_t p_list, char* comment)
+add_comment	./src/server/common/common/ini/ini.c	/^static	void			add_comment(plist_t p_list, char* comment);$/;"	p	file:	signature:(plist_t p_list, char* comment)
+add_comment	./src/server/common/common/ini/ini.c	/^void add_comment(plist_t p_list, char* comment)$/;"	f	signature:(plist_t p_list, char* comment)
+address_map	./src/client/common/protocol/connection/connection.c	/^static	map_t	address_map;$/;"	v	file:
+address_map	./src/common/protocol/connection/connection.c	/^static	map_t	address_map;$/;"	v	file:
+address_map	./src/server/common/protocol/connection/connection.c	/^static	map_t	address_map;$/;"	v	file:
+analyse_line	./src/client/common/common/ini/ini.c	/^bool analyse_line(pini_file_info_t p_ini_file,$/;"	f	signature:(pini_file_info_t p_ini_file, char* line, pini_section_t* p_p_section)
+analyse_line	./src/client/common/common/ini/ini.c	/^static	bool			analyse_line(pini_file_info_t p_ini_file,$/;"	p	file:	signature:(pini_file_info_t p_ini_file, char* line, pini_section_t* p_p_section)
+analyse_line	./src/common/common/ini/ini.c	/^bool analyse_line(pini_file_info_t p_ini_file,$/;"	f	signature:(pini_file_info_t p_ini_file, char* line, pini_section_t* p_p_section)
+analyse_line	./src/common/common/ini/ini.c	/^static	bool			analyse_line(pini_file_info_t p_ini_file,$/;"	p	file:	signature:(pini_file_info_t p_ini_file, char* line, pini_section_t* p_p_section)
+analyse_line	./src/server/common/common/ini/ini.c	/^bool analyse_line(pini_file_info_t p_ini_file,$/;"	f	signature:(pini_file_info_t p_ini_file, char* line, pini_section_t* p_p_section)
+analyse_line	./src/server/common/common/ini/ini.c	/^static	bool			analyse_line(pini_file_info_t p_ini_file,$/;"	p	file:	signature:(pini_file_info_t p_ini_file, char* line, pini_section_t* p_p_section)
 bool	./src/client/common/common/types.h	/^	typedef	u8						bool;$/;"	t
 bool	./src/client/common/common/types.h	/^	typedef	u8					bool;$/;"	t
 bool	./src/common/common/types.h	/^	typedef	u8						bool;$/;"	t
 bool	./src/common/common/types.h	/^	typedef	u8					bool;$/;"	t
 bool	./src/server/common/common/types.h	/^	typedef	u8						bool;$/;"	t
 bool	./src/server/common/common/types.h	/^	typedef	u8					bool;$/;"	t
+buf	./src/client/common/protocol/connection/connection.h	/^	u8			buf[];$/;"	m	union:_pkg	access:public
+buf	./src/client/common/protocol/connection/connection.h	/^	u8*						buf;$/;"	m	struct:_connection	access:public
+buf	./src/common/protocol/connection/connection.h	/^	u8			buf[];$/;"	m	union:_pkg	access:public
+buf	./src/common/protocol/connection/connection.h	/^	u8*						buf;$/;"	m	struct:_connection	access:public
+buf	./src/server/common/protocol/connection/connection.h	/^	u8			buf[];$/;"	m	union:_pkg	access:public
+buf	./src/server/common/protocol/connection/connection.h	/^	u8*						buf;$/;"	m	struct:_connection	access:public
 check_node_balance	./src/client/common/common/map/map.c	/^static	void	check_node_balance(prbtree_node_t p_node,$/;"	p	file:	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool* p_end)
 check_node_balance	./src/client/common/common/map/map.c	/^void check_node_balance(prbtree_node_t p_node,$/;"	f	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool * p_end)
 check_node_balance	./src/common/common/map/map.c	/^static	void	check_node_balance(prbtree_node_t p_node,$/;"	p	file:	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool* p_end)
 check_node_balance	./src/common/common/map/map.c	/^void check_node_balance(prbtree_node_t p_node,$/;"	f	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool * p_end)
 check_node_balance	./src/server/common/common/map/map.c	/^static	void	check_node_balance(prbtree_node_t p_node,$/;"	p	file:	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool* p_end)
 check_node_balance	./src/server/common/common/map/map.c	/^void check_node_balance(prbtree_node_t p_node,$/;"	f	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool * p_end)
+checksum	./src/client/common/protocol/connection/connection.c	/^static	bool	checksum(ppkg_t p_pkg);$/;"	p	file:	signature:(ppkg_t p_pkg)
+checksum	./src/client/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+checksum	./src/common/protocol/connection/connection.c	/^static	bool	checksum(ppkg_t p_pkg);$/;"	p	file:	signature:(ppkg_t p_pkg)
+checksum	./src/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+checksum	./src/server/common/protocol/connection/connection.c	/^static	bool	checksum(ppkg_t p_pkg);$/;"	p	file:	signature:(ppkg_t p_pkg)
+checksum	./src/server/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+close_connection	./src/client/common/protocol/connection/connection.h	/^void			close_connection(pconnection_t p_conn);$/;"	p	signature:(pconnection_t p_conn)
+close_connection	./src/common/protocol/connection/connection.h	/^void			close_connection(pconnection_t p_conn);$/;"	p	signature:(pconnection_t p_conn)
+close_connection	./src/server/common/protocol/connection/connection.h	/^void			close_connection(pconnection_t p_conn);$/;"	p	signature:(pconnection_t p_conn)
 color	./src/client/common/common/map/map.c	47;"	d	file:
 color	./src/client/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
 color	./src/common/common/map/map.c	47;"	d	file:
 color	./src/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
 color	./src/server/common/common/map/map.c	47;"	d	file:
 color	./src/server/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
+comment	./src/client/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
+comment	./src/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
+comment	./src/server/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
+connection_init	./src/client/common/protocol/connection/connection.h	/^bool			connection_init();$/;"	p	signature:()
+connection_init	./src/common/protocol/connection/connection.h	/^bool			connection_init();$/;"	p	signature:()
+connection_init	./src/server/common/protocol/connection/connection.h	/^bool			connection_init();$/;"	p	signature:()
+connection_t	./src/client/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+connection_t	./src/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+connection_t	./src/server/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+create_connection	./src/client/common/protocol/connection/connection.h	/^pconnection_t	create_connection(char* address);$/;"	p	signature:(char* address)
+create_connection	./src/common/protocol/connection/connection.h	/^pconnection_t	create_connection(char* address);$/;"	p	signature:(char* address)
+create_connection	./src/server/common/protocol/connection/connection.h	/^pconnection_t	create_connection(char* address);$/;"	p	signature:(char* address)
+data	./src/client/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon1	access:public
+data	./src/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon3	access:public
+data	./src/server/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon2	access:public
+dest_addr	./src/client/common/protocol/connection/connection.h	/^	struct	sockaddr_in		dest_addr;$/;"	m	struct:_connection	typeref:struct:_connection::sockaddr_in	access:public
+dest_addr	./src/common/protocol/connection/connection.h	/^	struct	sockaddr_in		dest_addr;$/;"	m	struct:_connection	typeref:struct:_connection::sockaddr_in	access:public
+dest_addr	./src/server/common/protocol/connection/connection.h	/^	struct	sockaddr_in		dest_addr;$/;"	m	struct:_connection	typeref:struct:_connection::sockaddr_in	access:public
 destroier	./src/client/common/common/types.h	/^typedef	void	(*destroier)(void*);$/;"	t
 destroier	./src/common/common/types.h	/^typedef	void	(*destroier)(void*);$/;"	t
 destroier	./src/server/common/common/types.h	/^typedef	void	(*destroier)(void*);$/;"	t
@@ -117,12 +294,99 @@ false	./src/common/common/types.h	41;"	d
 false	./src/common/common/types.h	64;"	d
 false	./src/server/common/common/types.h	41;"	d
 false	./src/server/common/common/types.h	64;"	d
+fp	./src/client/common/common/ini/ini.h	/^	FILE*	fp;$/;"	m	struct:_ini_file_info	access:public
+fp	./src/common/common/ini/ini.h	/^	FILE*	fp;$/;"	m	struct:_ini_file_info	access:public
+fp	./src/server/common/common/ini/ini.h	/^	FILE*	fp;$/;"	m	struct:_ini_file_info	access:public
+get_key	./src/client/common/common/ini/ini.c	/^pini_key_t get_key(pini_section_t p_section, char* key, bool create)$/;"	f	signature:(pini_section_t p_section, char* key, bool create)
+get_key	./src/client/common/common/ini/ini.c	/^static	pini_key_t		get_key(pini_section_t p_section, char* key,$/;"	p	file:	signature:(pini_section_t p_section, char* key, bool create)
+get_key	./src/common/common/ini/ini.c	/^pini_key_t get_key(pini_section_t p_section, char* key, bool create)$/;"	f	signature:(pini_section_t p_section, char* key, bool create)
+get_key	./src/common/common/ini/ini.c	/^static	pini_key_t		get_key(pini_section_t p_section, char* key,$/;"	p	file:	signature:(pini_section_t p_section, char* key, bool create)
+get_key	./src/server/common/common/ini/ini.c	/^pini_key_t get_key(pini_section_t p_section, char* key, bool create)$/;"	f	signature:(pini_section_t p_section, char* key, bool create)
+get_key	./src/server/common/common/ini/ini.c	/^static	pini_key_t		get_key(pini_section_t p_section, char* key,$/;"	p	file:	signature:(pini_section_t p_section, char* key, bool create)
+get_section	./src/client/common/common/ini/ini.c	/^pini_section_t get_section(pini_file_info_t p_ini_file, char* section,$/;"	f	signature:(pini_file_info_t p_ini_file, char* section, bool create)
+get_section	./src/client/common/common/ini/ini.c	/^static	pini_section_t	get_section(pini_file_info_t p_ini_file, char* section,$/;"	p	file:	signature:(pini_file_info_t p_ini_file, char* section, bool create)
+get_section	./src/common/common/ini/ini.c	/^pini_section_t get_section(pini_file_info_t p_ini_file, char* section,$/;"	f	signature:(pini_file_info_t p_ini_file, char* section, bool create)
+get_section	./src/common/common/ini/ini.c	/^static	pini_section_t	get_section(pini_file_info_t p_ini_file, char* section,$/;"	p	file:	signature:(pini_file_info_t p_ini_file, char* section, bool create)
+get_section	./src/server/common/common/ini/ini.c	/^pini_section_t get_section(pini_file_info_t p_ini_file, char* section,$/;"	f	signature:(pini_file_info_t p_ini_file, char* section, bool create)
+get_section	./src/server/common/common/ini/ini.c	/^static	pini_section_t	get_section(pini_file_info_t p_ini_file, char* section,$/;"	p	file:	signature:(pini_file_info_t p_ini_file, char* section, bool create)
 grand_parent	./src/client/common/common/map/map.c	25;"	d	file:
 grand_parent	./src/common/common/map/map.c	25;"	d	file:
 grand_parent	./src/server/common/common/map/map.c	25;"	d	file:
+head	./src/client/common/protocol/connection/connection.h	/^		pkg_head_t	head;$/;"	m	struct:_pkg::__anon1	access:public
+head	./src/common/protocol/connection/connection.h	/^		pkg_head_t	head;$/;"	m	struct:_pkg::__anon3	access:public
+head	./src/server/common/protocol/connection/connection.h	/^		pkg_head_t	head;$/;"	m	struct:_pkg::__anon2	access:public
+id	./src/client/common/protocol/connection/connection.h	/^	u32						id;$/;"	m	struct:_connection	access:public
+id	./src/client/common/protocol/connection/connection.h	/^	u32		id;$/;"	m	struct:_pkg_head	access:public
+id	./src/common/protocol/connection/connection.h	/^	u32						id;$/;"	m	struct:_connection	access:public
+id	./src/common/protocol/connection/connection.h	/^	u32		id;$/;"	m	struct:_pkg_head	access:public
+id	./src/server/common/protocol/connection/connection.h	/^	u32						id;$/;"	m	struct:_connection	access:public
+id	./src/server/common/protocol/connection/connection.h	/^	u32		id;$/;"	m	struct:_pkg_head	access:public
+ini_close	./src/client/common/common/ini/ini.c	/^void ini_close(pini_file_info_t p_file)$/;"	f	signature:(pini_file_info_t p_file)
+ini_close	./src/client/common/common/ini/ini.h	/^void				ini_close(pini_file_info_t p_file);$/;"	p	signature:(pini_file_info_t p_file)
+ini_close	./src/common/common/ini/ini.c	/^void ini_close(pini_file_info_t p_file)$/;"	f	signature:(pini_file_info_t p_file)
+ini_close	./src/common/common/ini/ini.h	/^void				ini_close(pini_file_info_t p_file);$/;"	p	signature:(pini_file_info_t p_file)
+ini_close	./src/server/common/common/ini/ini.c	/^void ini_close(pini_file_info_t p_file)$/;"	f	signature:(pini_file_info_t p_file)
+ini_close	./src/server/common/common/ini/ini.h	/^void				ini_close(pini_file_info_t p_file);$/;"	p	signature:(pini_file_info_t p_file)
+ini_comment_t	./src/client/common/common/ini/ini.h	/^} ini_comment_t, *pini_comment_t;$/;"	t	typeref:struct:_ini_comment
+ini_comment_t	./src/common/common/ini/ini.h	/^} ini_comment_t, *pini_comment_t;$/;"	t	typeref:struct:_ini_comment
+ini_comment_t	./src/server/common/common/ini/ini.h	/^} ini_comment_t, *pini_comment_t;$/;"	t	typeref:struct:_ini_comment
+ini_file_info_t	./src/client/common/common/ini/ini.h	/^} ini_file_info_t, *pini_file_info_t;$/;"	t	typeref:struct:_ini_file_info
+ini_file_info_t	./src/common/common/ini/ini.h	/^} ini_file_info_t, *pini_file_info_t;$/;"	t	typeref:struct:_ini_file_info
+ini_file_info_t	./src/server/common/common/ini/ini.h	/^} ini_file_info_t, *pini_file_info_t;$/;"	t	typeref:struct:_ini_file_info
+ini_get_key_value	./src/client/common/common/ini/ini.c	/^size_t ini_get_key_value(pini_file_info_t p_file,$/;"	f	signature:(pini_file_info_t p_file, char* section, char* key, char* buf, size_t buf_size)
+ini_get_key_value	./src/client/common/common/ini/ini.h	/^size_t				ini_get_key_value(pini_file_info_t p_file,$/;"	p	signature:(pini_file_info_t p_file, char* section, char* key, char* buf, size_t buf_size)
+ini_get_key_value	./src/common/common/ini/ini.c	/^size_t ini_get_key_value(pini_file_info_t p_file,$/;"	f	signature:(pini_file_info_t p_file, char* section, char* key, char* buf, size_t buf_size)
+ini_get_key_value	./src/common/common/ini/ini.h	/^size_t				ini_get_key_value(pini_file_info_t p_file,$/;"	p	signature:(pini_file_info_t p_file, char* section, char* key, char* buf, size_t buf_size)
+ini_get_key_value	./src/server/common/common/ini/ini.c	/^size_t ini_get_key_value(pini_file_info_t p_file,$/;"	f	signature:(pini_file_info_t p_file, char* section, char* key, char* buf, size_t buf_size)
+ini_get_key_value	./src/server/common/common/ini/ini.h	/^size_t				ini_get_key_value(pini_file_info_t p_file,$/;"	p	signature:(pini_file_info_t p_file, char* section, char* key, char* buf, size_t buf_size)
+ini_key_t	./src/client/common/common/ini/ini.h	/^} ini_key_t, *pini_key_t;$/;"	t	typeref:struct:_ini_key
+ini_key_t	./src/common/common/ini/ini.h	/^} ini_key_t, *pini_key_t;$/;"	t	typeref:struct:_ini_key
+ini_key_t	./src/server/common/common/ini/ini.h	/^} ini_key_t, *pini_key_t;$/;"	t	typeref:struct:_ini_key
+ini_line_t	./src/client/common/common/ini/ini.h	/^} ini_line_t, *pini_line_t;$/;"	t	typeref:struct:_ini_line
+ini_line_t	./src/common/common/ini/ini.h	/^} ini_line_t, *pini_line_t;$/;"	t	typeref:struct:_ini_line
+ini_line_t	./src/server/common/common/ini/ini.h	/^} ini_line_t, *pini_line_t;$/;"	t	typeref:struct:_ini_line
+ini_open	./src/client/common/common/ini/ini.c	/^pini_file_info_t ini_open(char* path)$/;"	f	signature:(char* path)
+ini_open	./src/client/common/common/ini/ini.h	/^pini_file_info_t		ini_open(char* path);$/;"	p	signature:(char* path)
+ini_open	./src/common/common/ini/ini.c	/^pini_file_info_t ini_open(char* path)$/;"	f	signature:(char* path)
+ini_open	./src/common/common/ini/ini.h	/^pini_file_info_t		ini_open(char* path);$/;"	p	signature:(char* path)
+ini_open	./src/server/common/common/ini/ini.c	/^pini_file_info_t ini_open(char* path)$/;"	f	signature:(char* path)
+ini_open	./src/server/common/common/ini/ini.h	/^pini_file_info_t		ini_open(char* path);$/;"	p	signature:(char* path)
+ini_section_t	./src/client/common/common/ini/ini.h	/^} ini_section_t, *pini_section_t;$/;"	t	typeref:struct:_ini_section
+ini_section_t	./src/common/common/ini/ini.h	/^} ini_section_t, *pini_section_t;$/;"	t	typeref:struct:_ini_section
+ini_section_t	./src/server/common/common/ini/ini.h	/^} ini_section_t, *pini_section_t;$/;"	t	typeref:struct:_ini_section
+ini_set_key_value	./src/client/common/common/ini/ini.c	/^void ini_set_key_value(pini_file_info_t p_file,$/;"	f	signature:(pini_file_info_t p_file, char* section, char* key, char* value)
+ini_set_key_value	./src/client/common/common/ini/ini.h	/^void				ini_set_key_value(pini_file_info_t p_file,$/;"	p	signature:(pini_file_info_t p_file, char* section, char* key, char* value)
+ini_set_key_value	./src/common/common/ini/ini.c	/^void ini_set_key_value(pini_file_info_t p_file,$/;"	f	signature:(pini_file_info_t p_file, char* section, char* key, char* value)
+ini_set_key_value	./src/common/common/ini/ini.h	/^void				ini_set_key_value(pini_file_info_t p_file,$/;"	p	signature:(pini_file_info_t p_file, char* section, char* key, char* value)
+ini_set_key_value	./src/server/common/common/ini/ini.c	/^void ini_set_key_value(pini_file_info_t p_file,$/;"	f	signature:(pini_file_info_t p_file, char* section, char* key, char* value)
+ini_set_key_value	./src/server/common/common/ini/ini.h	/^void				ini_set_key_value(pini_file_info_t p_file,$/;"	p	signature:(pini_file_info_t p_file, char* section, char* key, char* value)
+ini_sync	./src/client/common/common/ini/ini.c	/^bool ini_sync(pini_file_info_t p_file)$/;"	f	signature:(pini_file_info_t p_file)
+ini_sync	./src/client/common/common/ini/ini.h	/^bool				ini_sync(pini_file_info_t p_file);$/;"	p	signature:(pini_file_info_t p_file)
+ini_sync	./src/common/common/ini/ini.c	/^bool ini_sync(pini_file_info_t p_file)$/;"	f	signature:(pini_file_info_t p_file)
+ini_sync	./src/common/common/ini/ini.h	/^bool				ini_sync(pini_file_info_t p_file);$/;"	p	signature:(pini_file_info_t p_file)
+ini_sync	./src/server/common/common/ini/ini.c	/^bool ini_sync(pini_file_info_t p_file)$/;"	f	signature:(pini_file_info_t p_file)
+ini_sync	./src/server/common/common/ini/ini.h	/^bool				ini_sync(pini_file_info_t p_file);$/;"	p	signature:(pini_file_info_t p_file)
+jump_space	./src/client/common/common/ini/ini.c	/^static	void			jump_space(char**p);$/;"	p	file:	signature:(char**p)
+jump_space	./src/client/common/common/ini/ini.c	/^void jump_space(char**p)$/;"	f	signature:(char**p)
+jump_space	./src/common/common/ini/ini.c	/^static	void			jump_space(char**p);$/;"	p	file:	signature:(char**p)
+jump_space	./src/common/common/ini/ini.c	/^void jump_space(char**p)$/;"	f	signature:(char**p)
+jump_space	./src/server/common/common/ini/ini.c	/^static	void			jump_space(char**p);$/;"	p	file:	signature:(char**p)
+jump_space	./src/server/common/common/ini/ini.c	/^void jump_space(char**p)$/;"	f	signature:(char**p)
 key	./src/client/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
 key	./src/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
 key	./src/server/common/common/map/map.h	/^	char*					key;			\/\/Key$/;"	m	struct:_rbtree_node	access:public
+key_destroy_callback	./src/client/common/common/ini/ini.c	/^static	void			key_destroy_callback(void* p_item, void* args);$/;"	p	file:	signature:(void* p_item, void* args)
+key_destroy_callback	./src/client/common/common/ini/ini.c	/^void key_destroy_callback(void* p_item, void* args)$/;"	f	signature:(void* p_item, void* args)
+key_destroy_callback	./src/common/common/ini/ini.c	/^static	void			key_destroy_callback(void* p_item, void* args);$/;"	p	file:	signature:(void* p_item, void* args)
+key_destroy_callback	./src/common/common/ini/ini.c	/^void key_destroy_callback(void* p_item, void* args)$/;"	f	signature:(void* p_item, void* args)
+key_destroy_callback	./src/server/common/common/ini/ini.c	/^static	void			key_destroy_callback(void* p_item, void* args);$/;"	p	file:	signature:(void* p_item, void* args)
+key_destroy_callback	./src/server/common/common/ini/ini.c	/^void key_destroy_callback(void* p_item, void* args)$/;"	f	signature:(void* p_item, void* args)
+key_name	./src/client/common/common/ini/ini.h	/^	char*		key_name;$/;"	m	struct:_ini_key	access:public
+key_name	./src/common/common/ini/ini.h	/^	char*		key_name;$/;"	m	struct:_ini_key	access:public
+key_name	./src/server/common/common/ini/ini.h	/^	char*		key_name;$/;"	m	struct:_ini_key	access:public
+keys	./src/client/common/common/ini/ini.h	/^	list_t		keys;$/;"	m	struct:_ini_section	access:public
+keys	./src/common/common/ini/ini.h	/^	list_t		keys;$/;"	m	struct:_ini_section	access:public
+keys	./src/server/common/common/ini/ini.h	/^	list_t		keys;$/;"	m	struct:_ini_section	access:public
 le16	./src/client/common/common/types.h	/^	typedef	u16						le16;$/;"	t
 le16	./src/client/common/common/types.h	/^	typedef	u16					le16;$/;"	t
 le16	./src/common/common/types.h	/^	typedef	u16						le16;$/;"	t
@@ -153,6 +417,15 @@ left_rotate	./src/common/common/map/map.c	/^bool left_rotate(pmap_t p_map, prbtr
 left_rotate	./src/common/common/map/map.c	/^static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
 left_rotate	./src/server/common/common/map/map.c	/^bool left_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
 left_rotate	./src/server/common/common/map/map.c	/^static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
+line	./src/client/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_comment	access:public
+line	./src/client/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_key	access:public
+line	./src/client/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_section	access:public
+line	./src/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_comment	access:public
+line	./src/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_key	access:public
+line	./src/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_section	access:public
+line	./src/server/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_comment	access:public
+line	./src/server/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_key	access:public
+line	./src/server/common/common/ini/ini.h	/^	ini_line_t	line;$/;"	m	struct:_ini_section	access:public
 list_init	./src/client/common/common/list/list.h	26;"	d
 list_init	./src/common/common/list/list.h	26;"	d
 list_init	./src/server/common/common/list/list.h	26;"	d
@@ -180,6 +453,9 @@ list_remove	./src/server/common/common/list/list.h	/^void			list_remove(plist_t 
 list_t	./src/client/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
 list_t	./src/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
 list_t	./src/server/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
+listen_connection	./src/client/common/protocol/connection/connection.h	/^pconnection_t	listen_connection(u16 port);$/;"	p	signature:(u16 port)
+listen_connection	./src/common/protocol/connection/connection.h	/^pconnection_t	listen_connection(u16 port);$/;"	p	signature:(u16 port)
+listen_connection	./src/server/common/protocol/connection/connection.h	/^pconnection_t	listen_connection(u16 port);$/;"	p	signature:(u16 port)
 main	./src/client/main.c	/^int main(int argc, char* argv[])$/;"	f	signature:(int argc, char* argv[])
 main	./src/server/main.c	/^int main(int argc, char* argv[])$/;"	f	signature:(int argc, char* argv[])
 map_balance_chk	./src/client/common/common/map/map.c	/^void map_balance_chk(pmap_t p_map)$/;"	f	signature:(pmap_t p_map)
@@ -242,6 +518,36 @@ p_prev	./src/server/common/common/list/list.h	/^	struct	_list_node*		p_prev;$/;"
 p_right	./src/client/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
 p_right	./src/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
 p_right	./src/server/common/common/map/map.h	/^	struct	_rbtree_node*	p_right;		\/\/Right child$/;"	m	struct:_rbtree_node	typeref:struct:_rbtree_node::_rbtree_node	access:public
+path	./src/client/common/common/ini/ini.h	/^	char*	path;$/;"	m	struct:_ini_file_info	access:public
+path	./src/common/common/ini/ini.h	/^	char*	path;$/;"	m	struct:_ini_file_info	access:public
+path	./src/server/common/common/ini/ini.h	/^	char*	path;$/;"	m	struct:_ini_file_info	access:public
+pconnection_t	./src/client/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+pconnection_t	./src/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+pconnection_t	./src/server/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+pini_comment_t	./src/client/common/common/ini/ini.h	/^} ini_comment_t, *pini_comment_t;$/;"	t	typeref:struct:_ini_comment
+pini_comment_t	./src/common/common/ini/ini.h	/^} ini_comment_t, *pini_comment_t;$/;"	t	typeref:struct:_ini_comment
+pini_comment_t	./src/server/common/common/ini/ini.h	/^} ini_comment_t, *pini_comment_t;$/;"	t	typeref:struct:_ini_comment
+pini_file_info_t	./src/client/common/common/ini/ini.h	/^} ini_file_info_t, *pini_file_info_t;$/;"	t	typeref:struct:_ini_file_info
+pini_file_info_t	./src/common/common/ini/ini.h	/^} ini_file_info_t, *pini_file_info_t;$/;"	t	typeref:struct:_ini_file_info
+pini_file_info_t	./src/server/common/common/ini/ini.h	/^} ini_file_info_t, *pini_file_info_t;$/;"	t	typeref:struct:_ini_file_info
+pini_key_t	./src/client/common/common/ini/ini.h	/^} ini_key_t, *pini_key_t;$/;"	t	typeref:struct:_ini_key
+pini_key_t	./src/common/common/ini/ini.h	/^} ini_key_t, *pini_key_t;$/;"	t	typeref:struct:_ini_key
+pini_key_t	./src/server/common/common/ini/ini.h	/^} ini_key_t, *pini_key_t;$/;"	t	typeref:struct:_ini_key
+pini_line_t	./src/client/common/common/ini/ini.h	/^} ini_line_t, *pini_line_t;$/;"	t	typeref:struct:_ini_line
+pini_line_t	./src/common/common/ini/ini.h	/^} ini_line_t, *pini_line_t;$/;"	t	typeref:struct:_ini_line
+pini_line_t	./src/server/common/common/ini/ini.h	/^} ini_line_t, *pini_line_t;$/;"	t	typeref:struct:_ini_line
+pini_section_t	./src/client/common/common/ini/ini.h	/^} ini_section_t, *pini_section_t;$/;"	t	typeref:struct:_ini_section
+pini_section_t	./src/common/common/ini/ini.h	/^} ini_section_t, *pini_section_t;$/;"	t	typeref:struct:_ini_section
+pini_section_t	./src/server/common/common/ini/ini.h	/^} ini_section_t, *pini_section_t;$/;"	t	typeref:struct:_ini_section
+pkg_head_t	./src/client/common/protocol/connection/connection.h	/^} pkg_head_t, *ppkg_head_t;$/;"	t	typeref:struct:_pkg_head
+pkg_head_t	./src/common/protocol/connection/connection.h	/^} pkg_head_t, *ppkg_head_t;$/;"	t	typeref:struct:_pkg_head
+pkg_head_t	./src/server/common/protocol/connection/connection.h	/^} pkg_head_t, *ppkg_head_t;$/;"	t	typeref:struct:_pkg_head
+pkg_id	./src/client/common/protocol/connection/connection.h	/^	u32						pkg_id;$/;"	m	struct:_connection	access:public
+pkg_id	./src/common/protocol/connection/connection.h	/^	u32						pkg_id;$/;"	m	struct:_connection	access:public
+pkg_id	./src/server/common/protocol/connection/connection.h	/^	u32						pkg_id;$/;"	m	struct:_connection	access:public
+pkg_t	./src/client/common/protocol/connection/connection.h	/^} pkg_t, *ppkg_t;$/;"	t	typeref:union:_pkg
+pkg_t	./src/common/protocol/connection/connection.h	/^} pkg_t, *ppkg_t;$/;"	t	typeref:union:_pkg
+pkg_t	./src/server/common/protocol/connection/connection.h	/^} pkg_t, *ppkg_t;$/;"	t	typeref:union:_pkg
 plist_node_t	./src/client/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
 plist_node_t	./src/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
 plist_node_t	./src/server/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
@@ -251,6 +557,12 @@ plist_t	./src/server/common/common/list/list.h	/^} list_node_t, *plist_node_t, *
 pmap_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 pmap_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 pmap_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+ppkg_head_t	./src/client/common/protocol/connection/connection.h	/^} pkg_head_t, *ppkg_head_t;$/;"	t	typeref:struct:_pkg_head
+ppkg_head_t	./src/common/protocol/connection/connection.h	/^} pkg_head_t, *ppkg_head_t;$/;"	t	typeref:struct:_pkg_head
+ppkg_head_t	./src/server/common/protocol/connection/connection.h	/^} pkg_head_t, *ppkg_head_t;$/;"	t	typeref:struct:_pkg_head
+ppkg_t	./src/client/common/protocol/connection/connection.h	/^} pkg_t, *ppkg_t;$/;"	t	typeref:union:_pkg
+ppkg_t	./src/common/protocol/connection/connection.h	/^} pkg_t, *ppkg_t;$/;"	t	typeref:union:_pkg
+ppkg_t	./src/server/common/protocol/connection/connection.h	/^} pkg_t, *ppkg_t;$/;"	t	typeref:union:_pkg
 prbtree_node_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 prbtree_node_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 prbtree_node_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
@@ -260,6 +572,15 @@ rbtree_node_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_n
 rbtree_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 rbtree_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 rbtree_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
+read_buf_line	./src/client/common/common/ini/ini.c	/^bool read_buf_line(FILE* fp, char** p_buf, size_t* p_len)$/;"	f	signature:(FILE* fp, char** p_buf, size_t* p_len)
+read_buf_line	./src/client/common/common/ini/ini.c	/^static	bool			read_buf_line(FILE* fp, char** p_buf, size_t* p_len);$/;"	p	file:	signature:(FILE* fp, char** p_buf, size_t* p_len)
+read_buf_line	./src/common/common/ini/ini.c	/^bool read_buf_line(FILE* fp, char** p_buf, size_t* p_len)$/;"	f	signature:(FILE* fp, char** p_buf, size_t* p_len)
+read_buf_line	./src/common/common/ini/ini.c	/^static	bool			read_buf_line(FILE* fp, char** p_buf, size_t* p_len);$/;"	p	file:	signature:(FILE* fp, char** p_buf, size_t* p_len)
+read_buf_line	./src/server/common/common/ini/ini.c	/^bool read_buf_line(FILE* fp, char** p_buf, size_t* p_len)$/;"	f	signature:(FILE* fp, char** p_buf, size_t* p_len)
+read_buf_line	./src/server/common/common/ini/ini.c	/^static	bool			read_buf_line(FILE* fp, char** p_buf, size_t* p_len);$/;"	p	file:	signature:(FILE* fp, char** p_buf, size_t* p_len)
+recv_data	./src/client/common/protocol/connection/connection.h	/^size_t			recv_data();$/;"	p	signature:()
+recv_data	./src/common/protocol/connection/connection.h	/^size_t			recv_data();$/;"	p	signature:()
+recv_data	./src/server/common/protocol/connection/connection.h	/^size_t			recv_data();$/;"	p	signature:()
 remove_rebalance	./src/client/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
 remove_rebalance	./src/client/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
 remove_rebalance	./src/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
@@ -296,9 +617,27 @@ s8	./src/common/common/types.h	/^	typedef signed char				s8;$/;"	t
 s8	./src/common/common/types.h	/^	typedef signed char			s8;$/;"	t
 s8	./src/server/common/common/types.h	/^	typedef signed char				s8;$/;"	t
 s8	./src/server/common/common/types.h	/^	typedef signed char			s8;$/;"	t
+section_destroy_callback	./src/client/common/common/ini/ini.c	/^static	void			section_destroy_callback(void* p_item, void* args);$/;"	p	file:	signature:(void* p_item, void* args)
+section_destroy_callback	./src/client/common/common/ini/ini.c	/^void section_destroy_callback(void* p_item, void* args)$/;"	f	signature:(void* p_item, void* args)
+section_destroy_callback	./src/common/common/ini/ini.c	/^static	void			section_destroy_callback(void* p_item, void* args);$/;"	p	file:	signature:(void* p_item, void* args)
+section_destroy_callback	./src/common/common/ini/ini.c	/^void section_destroy_callback(void* p_item, void* args)$/;"	f	signature:(void* p_item, void* args)
+section_destroy_callback	./src/server/common/common/ini/ini.c	/^static	void			section_destroy_callback(void* p_item, void* args);$/;"	p	file:	signature:(void* p_item, void* args)
+section_destroy_callback	./src/server/common/common/ini/ini.c	/^void section_destroy_callback(void* p_item, void* args)$/;"	f	signature:(void* p_item, void* args)
+section_name	./src/client/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	struct:_ini_section	access:public
+section_name	./src/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	struct:_ini_section	access:public
+section_name	./src/server/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	struct:_ini_section	access:public
+sections	./src/client/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+sections	./src/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+sections	./src/server/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+send_data	./src/client/common/protocol/connection/connection.h	/^size_t			send_data();$/;"	p	signature:()
+send_data	./src/common/protocol/connection/connection.h	/^size_t			send_data();$/;"	p	signature:()
+send_data	./src/server/common/protocol/connection/connection.h	/^size_t			send_data();$/;"	p	signature:()
 sibling	./src/client/common/common/map/map.c	37;"	d	file:
 sibling	./src/common/common/map/map.c	37;"	d	file:
 sibling	./src/server/common/common/map/map.c	37;"	d	file:
+size	./src/client/common/protocol/connection/connection.h	/^	u32		size;$/;"	m	struct:_pkg_head	access:public
+size	./src/common/protocol/connection/connection.h	/^	u32		size;$/;"	m	struct:_pkg_head	access:public
+size	./src/server/common/protocol/connection/connection.h	/^	u32		size;$/;"	m	struct:_pkg_head	access:public
 tree_check	./src/client/common/common/map/map.c	/^static	void	tree_check(prbtree_node_t p_node);$/;"	p	file:	signature:(prbtree_node_t p_node)
 tree_check	./src/client/common/common/map/map.c	/^void tree_check(prbtree_node_t p_node)$/;"	f	signature:(prbtree_node_t p_node)
 tree_check	./src/common/common/map/map.c	/^static	void	tree_check(prbtree_node_t p_node);$/;"	p	file:	signature:(prbtree_node_t p_node)
@@ -311,6 +650,12 @@ true	./src/common/common/types.h	40;"	d
 true	./src/common/common/types.h	63;"	d
 true	./src/server/common/common/types.h	40;"	d
 true	./src/server/common/common/types.h	63;"	d
+type	./src/client/common/common/ini/ini.h	/^	int	type;$/;"	m	struct:_ini_line	access:public
+type	./src/client/common/protocol/connection/connection.h	/^	u32		type;$/;"	m	struct:_pkg_head	access:public
+type	./src/common/common/ini/ini.h	/^	int	type;$/;"	m	struct:_ini_line	access:public
+type	./src/common/protocol/connection/connection.h	/^	u32		type;$/;"	m	struct:_pkg_head	access:public
+type	./src/server/common/common/ini/ini.h	/^	int	type;$/;"	m	struct:_ini_line	access:public
+type	./src/server/common/protocol/connection/connection.h	/^	u32		type;$/;"	m	struct:_pkg_head	access:public
 u16	./src/client/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
 u16	./src/client/common/common/types.h	/^	typedef unsigned short		u16;$/;"	t
 u16	./src/common/common/types.h	/^	typedef unsigned short			u16;$/;"	t
@@ -338,6 +683,9 @@ u8	./src/server/common/common/types.h	/^	typedef	unsigned char		u8;$/;"	t
 uncle	./src/client/common/common/map/map.c	27;"	d	file:
 uncle	./src/common/common/map/map.c	27;"	d	file:
 uncle	./src/server/common/common/map/map.c	27;"	d	file:
+value	./src/client/common/common/ini/ini.h	/^	char*		value;$/;"	m	struct:_ini_key	access:public
 value	./src/client/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+value	./src/common/common/ini/ini.h	/^	char*		value;$/;"	m	struct:_ini_key	access:public
 value	./src/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public
+value	./src/server/common/common/ini/ini.h	/^	char*		value;$/;"	m	struct:_ini_key	access:public
 value	./src/server/common/common/map/map.h	/^	void*					value;			\/\/Value$/;"	m	struct:_rbtree_node	access:public

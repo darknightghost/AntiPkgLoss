@@ -15,10 +15,9 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include <sys/socket.h>
+#include "connection.h"
 
-#include "types.h"
-#include "map/map.h"
-#include "ini/ini.h"
+static	map_t	address_map;
 
-#define	UNREFERENCED_PARAMER(x)	(void)(x)
+static	bool	checksum(ppkg_t p_pkg);

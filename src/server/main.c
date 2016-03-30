@@ -17,53 +17,21 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+#include <errno.h>
 #include "common/common/common.h"
 
 
 int main(int argc, char* argv[])
 {
-	map_t map = NULL;
-	map_insert(&map , "qqqq", "asdasdasda");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "www", "asdasdasda");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "wwwwefwefa", "asdasdasda");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "asdadc", "a54da654d");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "hdrh4164", "sf54df15");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "j2132516541ghj", "tg2h2");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "16541615", "a5414651465");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "1651t6hbdrth", "th5d1rh6");
-	CHK_MAP_BALANCE(&map);
-	map_insert(&map , "rs5g12s651", "ser41g6s514");
-	CHK_MAP_BALANCE(&map);
-
-	map_remove(&map , "qqqq");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "www");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "wwwwefwefa");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "asdadc");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "hdrh4164");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "j2132516541ghj");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "16541615");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "1651t6hbdrth");
-	CHK_MAP_BALANCE(&map);
-	map_remove(&map , "rs5g12s651");
-	CHK_MAP_BALANCE(&map);
-
-	if(map_get(&map, "wwwwefwefa") == NULL) {
-		printf("removed\n");
+	//Load config
+	//Initialize log module
+	//Run as daemon
+	if(daemon(0, 0) != 0) {
+		return errno;
 	}
+
+	//Call service module
 
 	UNREFERENCED_PARAMER(argc);
 	UNREFERENCED_PARAMER(argv);
