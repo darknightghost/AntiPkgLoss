@@ -260,12 +260,12 @@ rbtree_node_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_n
 rbtree_t	./src/client/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 rbtree_t	./src/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
 rbtree_t	./src/server/common/common/map/map.h	/^} rbtree_node_t, *prbtree_node_t, *rbtree_t, *map_t, **pmap_t;$/;"	t	typeref:struct:_rbtree_node
-remove_rebalance	./src/client/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
-remove_rebalance	./src/client/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
-remove_rebalance	./src/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
-remove_rebalance	./src/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
-remove_rebalance	./src/server/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
-remove_rebalance	./src/server/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
+remove_rebalance	./src/client/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
+remove_rebalance	./src/client/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
+remove_rebalance	./src/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
+remove_rebalance	./src/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
+remove_rebalance	./src/server/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
+remove_rebalance	./src/server/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
 right_rotate	./src/client/common/common/map/map.c	/^bool right_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)
 right_rotate	./src/client/common/common/map/map.c	/^static	bool	right_rotate(pmap_t p_map, prbtree_node_t p_node);$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node)
 right_rotate	./src/common/common/map/map.c	/^bool right_rotate(pmap_t p_map, prbtree_node_t p_node)$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node)

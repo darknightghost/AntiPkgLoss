@@ -57,7 +57,8 @@
 
 static	bool	left_rotate(pmap_t p_map, prbtree_node_t p_node);
 static	bool	right_rotate(pmap_t p_map, prbtree_node_t p_node);
-static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node);
+static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,
+                                 prbtree_node_t p_parent);
 static	void	tree_check(prbtree_node_t p_node);
 static	void	check_node_balance(prbtree_node_t p_node,
                                    int* p_black_num, int* p_max_black_num,
@@ -242,6 +243,9 @@ bool map_set(pmap_t p_map, char* key, char* value)
 void* map_remove(pmap_t p_map, char* key)
 {
 	prbtree_node_t p_node;
+	prbtree_node_t p_tmp_node;
+	prbtree_node_t p_x;
+	prbtree_node_t p_parent;
 	int cmp_result;
 	void* ret;
 
@@ -270,7 +274,101 @@ void* map_remove(pmap_t p_map, char* key)
 	free(p_node->key);
 
 	//Remove node
-	UNREFERENCED_PARAMER(remove_rebalance);
+	//Find node to remove
+	if(p_node->p_left != NULL && p_node->p_right != NULL) {
+		p_tmp_node = p_node->p_left;
+
+		while(p_tmp_node->p_right != NULL) {
+			p_tmp_node = p_tmp_node->p_right;
+		}
+
+		p_node->key = p_tmp_node->key;
+		p_node->value = p_tmp_node->value;
+		p_node = p_tmp_node;
+	}
+
+	//Remove node
+	if(p_node->color == TREE_COLOR_RED) {
+		//Red
+		if(p_node->p_left != NULL) {
+			if(p_node->p_parent->p_left == p_node) {
+				p_node->p_parent->p_left = p_node->p_left;
+
+			} else {
+				p_node->p_parent->p_right = p_node->p_left;
+			}
+
+			p_node->p_left->p_parent = p_node->p_parent;
+
+		} else if(p_node->p_right != NULL) {
+			if(p_node->p_parent->p_left == p_node) {
+				p_node->p_parent->p_left = p_node->p_right;
+
+			} else {
+				p_node->p_parent->p_right = p_node->p_right;
+			}
+
+			p_node->p_right->p_parent = p_node->p_parent;
+
+		} else {
+			if(p_node->p_parent->p_left == p_node) {
+				p_node->p_parent->p_left = NULL;
+
+			} else {
+				p_node->p_parent->p_right = NULL;
+			}
+		}
+
+		free(p_node);
+
+	} else {
+		//Black
+		if(p_node == *p_map) {
+			*p_map = NULL;
+			free(p_node);
+
+		} else {
+			if(p_node->p_left != NULL) {
+				if(p_node->p_parent->p_left == p_node) {
+					p_node->p_parent->p_left = p_node->p_left;
+					p_x = p_node->p_parent->p_right;
+
+				} else {
+					p_node->p_parent->p_right = p_node->p_left;
+					p_x = p_node->p_parent->p_left;
+				}
+
+				p_x = p_node->p_left;
+				p_node->p_left->p_parent = p_node->p_parent;
+
+			} else if(p_node->p_right != NULL) {
+				if(p_node->p_parent->p_left == p_node) {
+					p_node->p_parent->p_left = p_node->p_right;
+
+				} else {
+					p_node->p_parent->p_right = p_node->p_right;
+				}
+
+				p_x = p_node->p_right;
+				p_node->p_right->p_parent = p_node->p_parent;
+
+			} else {
+				if(p_node->p_parent->p_left == p_node) {
+					p_node->p_parent->p_left = NULL;
+
+				} else {
+					p_node->p_parent->p_right = NULL;
+				}
+
+				p_x = NULL;
+				p_parent = p_node->p_parent;
+			}
+
+			free(p_node);
+			remove_rebalance(p_map, p_x, p_parent);
+		}
+	}
+
 	return ret;
 }
 
@@ -388,100 +486,131 @@ void tree_check(prbtree_node_t p_node)
 	}
 }
 
-void remove_rebalance(pmap_t p_map, prbtree_node_t p_node)
+void remove_rebalance(pmap_t p_map, prbtree_node_t p_node,
+                      prbtree_node_t p_parent)
 {
 	prbtree_node_t p_sibling;
-	prbtree_node_t p_parent;
 
-	while(p_node->color == TREE_COLOR_BLACK && p_node->p_parent != NULL) {
-		p_parent = p_node->p_parent;
+	while(true) {
+		if(p_node != NULL) {
+			p_parent = p_node->p_parent;
+		}
 
-		if(p_node == p_parent->p_left) {
+		if(color(p_node) == TREE_COLOR_RED) {
+			p_node->color = TREE_COLOR_BLACK;
+			break;
+
+		} else if(p_node == *p_map) {
+			break;
+		}
+
+		if(p_parent->p_left == p_node) {
 			p_sibling = p_parent->p_right;
 
+			//Case 1:
 			if(p_sibling->color == TREE_COLOR_RED) {
-				//Case 1:sibling node is red
-				p_parent->color = TREE_COLOR_RED;
 				p_sibling->color = TREE_COLOR_BLACK;
+				p_parent->color = TREE_COLOR_RED;
 				left_rotate(p_map, p_parent);
-				p_sibling = p_parent->p_right;
 			}
 
-			CHECK_TREE(*p_map);
+			p_sibling = p_parent->p_right;
 
-			if(color(p_sibling->p_left) == TREE_COLOR_BLACK
+			//Case 2:
+			if(p_sibling->color == TREE_COLOR_BLACK
+			   && color(p_sibling->p_left) == TREE_COLOR_BLACK
 			   && color(p_sibling->p_right) == TREE_COLOR_BLACK) {
-				//Case 2:sibling is black,Its childres are black
 				p_sibling->color = TREE_COLOR_RED;
 				p_node = p_parent;
-				CHECK_TREE(*p_map);
 				continue;
 			}
 
-			if(color(p_sibling->p_right) == TREE_COLOR_BLACK) {
-				//Case 3:right child of sibling is black,lefi is red
-				p_sibling->p_left->color = TREE_COLOR_BLACK;
+			//Case 3:
+			if(color(p_sibling) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_left) == TREE_COLOR_RED) {
 				p_sibling->color = TREE_COLOR_RED;
+				p_sibling->p_left->color = TREE_COLOR_BLACK;
 				right_rotate(p_map, p_sibling);
 				p_sibling = p_parent->p_right;
 			}
 
-			CHECK_TREE(*p_map);
-			//Case 4:right child of sibling is red
-			p_sibling->p_right->color = TREE_COLOR_BLACK;
-			p_sibling->color = p_parent->color;
-			p_parent->color = TREE_COLOR_BLACK;
-			CHECK_TREE(*p_map);
-			left_rotate(p_map, p_parent);
-			CHECK_TREE(*p_map);
-			break;
+			//Case 4:
+			if(color(p_sibling) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_right) == TREE_COLOR_RED) {
+				left_rotate(p_map, p_parent);
+				p_sibling->color = p_parent->color;
+
+				if(p_sibling->p_left != NULL) {
+					p_sibling->p_left->color = TREE_COLOR_BLACK;
+				}
+
+				if(p_sibling->p_right != NULL) {
+					p_sibling->p_right->color = TREE_COLOR_BLACK;
+				}
+
+				break;
+			}
 
 		} else {
 			p_sibling = p_parent->p_left;
 
+			//Case 1:
 			if(p_sibling->color == TREE_COLOR_RED) {
-				//Case 1:sibling node is red
-				p_parent->color = TREE_COLOR_RED;
 				p_sibling->color = TREE_COLOR_BLACK;
+				p_parent->color = TREE_COLOR_RED;
 				right_rotate(p_map, p_parent);
-				p_sibling = p_parent->p_left;
-				CHECK_TREE(*p_map);
 			}
 
-			if(color(p_sibling->p_right) == TREE_COLOR_BLACK
-			   && color(p_sibling->p_left) == TREE_COLOR_BLACK) {
-				//Case 2:sibling is black,Its childres are black
+			p_sibling = p_parent->p_left;
+
+			//Case 2:
+			if(p_sibling->color == TREE_COLOR_BLACK
+			   && color(p_sibling->p_left) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_right) == TREE_COLOR_BLACK) {
 				p_sibling->color = TREE_COLOR_RED;
 				p_node = p_parent;
-				CHECK_TREE(*p_map);
 				continue;
 			}
 
-			if(color(p_sibling->p_left) == TREE_COLOR_BLACK) {
-				//Case 3:left child of sibling is black,lefi is red
-				p_sibling->p_right->color = TREE_COLOR_BLACK;
+			//Case 3:
+			if(color(p_sibling) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_right) == TREE_COLOR_RED) {
 				p_sibling->color = TREE_COLOR_RED;
+				p_sibling->p_right->color = TREE_COLOR_BLACK;
 				left_rotate(p_map, p_sibling);
 				p_sibling = p_parent->p_left;
-				CHECK_TREE(*p_map);
 			}
 
-			//Case 4:left child of sibling is red
-			p_sibling->p_left->color = TREE_COLOR_BLACK;
-			p_sibling->color = p_parent->color;
-			p_parent->color = TREE_COLOR_BLACK;
-			CHECK_TREE(*p_map);
-			right_rotate(p_map, p_parent);
-			CHECK_TREE(*p_map);
-			break;
+			//Case 4:
+			if(color(p_sibling) == TREE_COLOR_BLACK
+			   && color(p_sibling->p_left) == TREE_COLOR_RED) {
+				right_rotate(p_map, p_parent);
+				p_sibling->color = p_parent->color;
+
+				if(p_sibling->p_left != NULL) {
+					p_sibling->p_left->color = TREE_COLOR_BLACK;
+				}
+
+				if(p_sibling->p_right != NULL) {
+					p_sibling->p_right->color = TREE_COLOR_BLACK;
+				}
+
+				break;
+			}
 		}
 	}
+
+	return;
 }
 
 void check_node_balance(prbtree_node_t p_node,
                         int* p_black_num, int* p_max_black_num,
                         bool * p_end)
 {
+	if(p_node == NULL) {
+		return;
+	}
+
 	if(p_node->color == TREE_COLOR_BLACK) {
 		(*p_black_num)++;
 	}
