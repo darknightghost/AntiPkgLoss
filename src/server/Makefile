@@ -4,7 +4,7 @@ AS = gcc
 ASFLAGS = -c -g -DDEBUG -DAMD64
 ASRULE = $(AS) $(ASFLAGS) -o $@ $<
 CC = gcc
-CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -g -DDEBUG -DAMD64
+CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread -g -DDEBUG -DAMD64
 CCRULE = $(CC) $(CFLAGS) -o $@ $<
 LD = gcc
 LDFLAGS = 
@@ -34,12 +34,18 @@ $(OBJDIR)/$(ARCH)/common/common/map/map.dep : common/common/map/map.c
 	$(DEPRULE)
 $(OBJDIR)/$(ARCH)/common/common/map/map.o : common/common/map/map.c
 	$(CCRULE)
-$(OUTPUT) : $(OBJDIR)/$(ARCH)/main.o $(OBJDIR)/$(ARCH)/common/common/list/list.o $(OBJDIR)/$(ARCH)/common/common/map/map.o 
+sinclude $(OBJDIR)/$(ARCH)/common/common/ini/ini.dep
+$(OBJDIR)/$(ARCH)/common/common/ini/ini.dep : common/common/ini/ini.c
+	mkdir -p $(dir $@)
+	$(DEPRULE)
+$(OBJDIR)/$(ARCH)/common/common/ini/ini.o : common/common/ini/ini.c
+	$(CCRULE)
+$(OUTPUT) : $(OBJDIR)/$(ARCH)/main.o $(OBJDIR)/$(ARCH)/common/common/list/list.o $(OBJDIR)/$(ARCH)/common/common/map/map.o $(OBJDIR)/$(ARCH)/common/common/ini/ini.o 
 	mkdir -p $(dir $(OUTPUT))
 	$(LDRULE)
 $(TARGET) : $(OUTPUT)
 	$(AFTER)
-	rm -f  $(OBJDIR)/$(ARCH)/main.dep $(OBJDIR)/$(ARCH)/common/common/list/list.dep $(OBJDIR)/$(ARCH)/common/common/map/map.dep
+	rm -f  $(OBJDIR)/$(ARCH)/main.dep $(OBJDIR)/$(ARCH)/common/common/list/list.dep $(OBJDIR)/$(ARCH)/common/common/map/map.dep $(OBJDIR)/$(ARCH)/common/common/ini/ini.dep
 clean :
 	rm -rf $(OBJDIR)/$(ARCH)
 delete :

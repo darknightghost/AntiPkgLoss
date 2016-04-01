@@ -24,6 +24,6 @@ int main(int argc, char* argv[])
 	//Call network module
 	//Execute game
 	return 0;
-	UNREFERENCED_PARAMER(argc);
-	UNREFERENCED_PARAMER(argv);
+	UNREFERENCED_PARAMETER(argc);
+	UNREFERENCED_PARAMETER(argv);
 }

@@ -33,8 +33,8 @@ int main(int argc, char* argv[])
 
 	//Call service module
 
-	UNREFERENCED_PARAMER(argc);
-	UNREFERENCED_PARAMER(argv);
+	UNREFERENCED_PARAMETER(argc);
+	UNREFERENCED_PARAMETER(argv);
 
 	return 0;
 }

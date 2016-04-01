@@ -6,7 +6,7 @@
 			<ASFLAGS type="textbox">-m32 -c</ASFLAGS>
 			<ASRULE type="textbox">$(AS) $(ASFLAGS) -o $@ $&lt;</ASRULE>
 			<CC type="textbox">gcc</CC>	
-			<CFLAGS type="textbox">-m32 -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror</CFLAGS>
+			<CFLAGS type="textbox">-m32 -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread</CFLAGS>
 			<CCRULE type="textbox">$(CC) $(CFLAGS) -o $@ $&lt;</CCRULE>
 			<LD type="textbox">gcc</LD>
 			<LDFLAGS type="textbox">-m32</LDFLAGS>
@@ -21,7 +21,7 @@
 			<ASFLAGS type="textbox">-c</ASFLAGS>
 			<ASRULE type="textbox">$(AS) $(ASFLAGS) -o $@ $&lt;</ASRULE>
 			<CC type="textbox">gcc</CC>	
-			<CFLAGS type="textbox">-c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror</CFLAGS>
+			<CFLAGS type="textbox">-c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread</CFLAGS>
 			<CCRULE type="textbox">$(CC) $(CFLAGS) -o $@ $&lt;</CCRULE>
 			<LD type="textbox">gcc</LD>
 			<LDFLAGS type="textbox"></LDFLAGS>

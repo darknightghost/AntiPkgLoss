@@ -18,8 +18,8 @@ CC	./src/client/Makefile	/^CC = i686-w64-mingw32-gcc$/;"	m
 CC	./src/server/Makefile	/^CC = gcc$/;"	m
 CCRULE	./src/client/Makefile	/^CCRULE = $(CC) $(CFLAGS) -o $@ $<$/;"	m
 CCRULE	./src/server/Makefile	/^CCRULE = $(CC) $(CFLAGS) -o $@ $<$/;"	m
-CFLAGS	./src/client/Makefile	/^CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -g -DDEBUG -DAMD64$/;"	m
-CFLAGS	./src/server/Makefile	/^CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -g -DDEBUG -DAMD64$/;"	m
+CFLAGS	./src/client/Makefile	/^CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -DWINDOWS -pthread -g -DDEBUG -DAMD64$/;"	m
+CFLAGS	./src/server/Makefile	/^CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread -g -DDEBUG -DAMD64$/;"	m
 CHECK_TREE	./src/client/common/common/map/map.c	52;"	d	file:
 CHECK_TREE	./src/client/common/common/map/map.c	55;"	d	file:
 CHECK_TREE	./src/common/common/map/map.c	52;"	d	file:
@@ -48,6 +48,9 @@ INI_LINE_KEY	./src/server/common/common/ini/ini.h	25;"	d
 INI_LINE_SECTION	./src/client/common/common/ini/ini.h	24;"	d
 INI_LINE_SECTION	./src/common/common/ini/ini.h	24;"	d
 INI_LINE_SECTION	./src/server/common/common/ini/ini.h	24;"	d
+INVALID_SOCKET	./src/client/common/protocol/connection/connection.c	34;"	d	file:
+INVALID_SOCKET	./src/common/protocol/connection/connection.c	34;"	d	file:
+INVALID_SOCKET	./src/server/common/protocol/connection/connection.c	34;"	d	file:
 LD	./src/client/Makefile	/^LD = i686-w64-mingw32-gcc$/;"	m
 LD	./src/server/Makefile	/^LD = gcc$/;"	m
 LDFLAGS	./src/client/Makefile	/^LDFLAGS = $/;"	m
@@ -61,21 +64,27 @@ OBJDIR	./src/client/Makefile	/^OBJDIR = ..\/..\/obj\/client$/;"	m
 OBJDIR	./src/server/Makefile	/^OBJDIR = ..\/..\/obj\/server$/;"	m
 OUTPUT	./src/client/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/client.exe$/;"	m
 OUTPUT	./src/server/Makefile	/^OUTPUT = ..\/..\/bin\/$(ARCH)\/server$/;"	m
-PKG_TYPE_CONNECT	./src/client/common/protocol/connection/connection.h	23;"	d
-PKG_TYPE_CONNECT	./src/common/protocol/connection/connection.h	23;"	d
-PKG_TYPE_CONNECT	./src/server/common/protocol/connection/connection.h	23;"	d
-PKG_TYPE_DATA	./src/client/common/protocol/connection/connection.h	27;"	d
-PKG_TYPE_DATA	./src/common/protocol/connection/connection.h	27;"	d
-PKG_TYPE_DATA	./src/server/common/protocol/connection/connection.h	27;"	d
-PKG_TYPE_HEARTBEAT	./src/client/common/protocol/connection/connection.h	26;"	d
-PKG_TYPE_HEARTBEAT	./src/common/protocol/connection/connection.h	26;"	d
-PKG_TYPE_HEARTBEAT	./src/server/common/protocol/connection/connection.h	26;"	d
-PKG_TYPE_REPLY	./src/client/common/protocol/connection/connection.h	24;"	d
-PKG_TYPE_REPLY	./src/common/protocol/connection/connection.h	24;"	d
-PKG_TYPE_REPLY	./src/server/common/protocol/connection/connection.h	24;"	d
-PKG_TYPE_RESEND	./src/client/common/protocol/connection/connection.h	25;"	d
-PKG_TYPE_RESEND	./src/common/protocol/connection/connection.h	25;"	d
-PKG_TYPE_RESEND	./src/server/common/protocol/connection/connection.h	25;"	d
+PKG_TYPE_CONNECT	./src/client/common/protocol/connection/connection.h	30;"	d
+PKG_TYPE_CONNECT	./src/common/protocol/connection/connection.h	30;"	d
+PKG_TYPE_CONNECT	./src/server/common/protocol/connection/connection.h	30;"	d
+PKG_TYPE_DATA	./src/client/common/protocol/connection/connection.h	34;"	d
+PKG_TYPE_DATA	./src/common/protocol/connection/connection.h	34;"	d
+PKG_TYPE_DATA	./src/server/common/protocol/connection/connection.h	34;"	d
+PKG_TYPE_HEARTBEAT	./src/client/common/protocol/connection/connection.h	33;"	d
+PKG_TYPE_HEARTBEAT	./src/common/protocol/connection/connection.h	33;"	d
+PKG_TYPE_HEARTBEAT	./src/server/common/protocol/connection/connection.h	33;"	d
+PKG_TYPE_REPLY	./src/client/common/protocol/connection/connection.h	31;"	d
+PKG_TYPE_REPLY	./src/common/protocol/connection/connection.h	31;"	d
+PKG_TYPE_REPLY	./src/server/common/protocol/connection/connection.h	31;"	d
+PKG_TYPE_RESEND	./src/client/common/protocol/connection/connection.h	32;"	d
+PKG_TYPE_RESEND	./src/common/protocol/connection/connection.h	32;"	d
+PKG_TYPE_RESEND	./src/server/common/protocol/connection/connection.h	32;"	d
+SOCKET	./src/client/common/protocol/connection/connection.c	/^	typedef	int				SOCKET;$/;"	t	file:
+SOCKET	./src/common/protocol/connection/connection.c	/^	typedef	int				SOCKET;$/;"	t	file:
+SOCKET	./src/server/common/protocol/connection/connection.c	/^	typedef	int				SOCKET;$/;"	t	file:
+SOCKET_ERROR	./src/client/common/protocol/connection/connection.c	35;"	d	file:
+SOCKET_ERROR	./src/common/protocol/connection/connection.c	35;"	d	file:
+SOCKET_ERROR	./src/server/common/protocol/connection/connection.c	35;"	d	file:
 TARGET	./src/client/Makefile	/^TARGET = client$/;"	m
 TARGET	./src/server/Makefile	/^TARGET = server$/;"	m
 TREE_COLOR_BLACK	./src/client/common/common/map/map.h	21;"	d
@@ -84,9 +93,9 @@ TREE_COLOR_BLACK	./src/server/common/common/map/map.h	21;"	d
 TREE_COLOR_RED	./src/client/common/common/map/map.h	22;"	d
 TREE_COLOR_RED	./src/common/common/map/map.h	22;"	d
 TREE_COLOR_RED	./src/server/common/common/map/map.h	22;"	d
-UNREFERENCED_PARAMER	./src/client/common/common/common.h	24;"	d
-UNREFERENCED_PARAMER	./src/common/common/common.h	24;"	d
-UNREFERENCED_PARAMER	./src/server/common/common/common.h	24;"	d
+UNREFERENCED_PARAMETER	./src/client/common/common/common.h	24;"	d
+UNREFERENCED_PARAMETER	./src/common/common/common.h	24;"	d
+UNREFERENCED_PARAMETER	./src/server/common/common/common.h	24;"	d
 _connection	./src/client/common/protocol/connection/connection.h	/^typedef	struct	_connection {$/;"	s
 _connection	./src/common/protocol/connection/connection.h	/^typedef	struct	_connection {$/;"	s
 _connection	./src/server/common/protocol/connection/connection.h	/^typedef	struct	_connection {$/;"	s
@@ -252,15 +261,24 @@ check_node_balance	./src/common/common/map/map.c	/^static	void	check_node_balanc
 check_node_balance	./src/common/common/map/map.c	/^void check_node_balance(prbtree_node_t p_node,$/;"	f	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool * p_end)
 check_node_balance	./src/server/common/common/map/map.c	/^static	void	check_node_balance(prbtree_node_t p_node,$/;"	p	file:	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool* p_end)
 check_node_balance	./src/server/common/common/map/map.c	/^void check_node_balance(prbtree_node_t p_node,$/;"	f	signature:(prbtree_node_t p_node, int* p_black_num, int* p_max_black_num, bool * p_end)
+checksum	./src/client/common/protocol/connection/connection.c	/^bool checksum(ppkg_t p_pkg)$/;"	f	signature:(ppkg_t p_pkg)
 checksum	./src/client/common/protocol/connection/connection.c	/^static	bool	checksum(ppkg_t p_pkg);$/;"	p	file:	signature:(ppkg_t p_pkg)
 checksum	./src/client/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+checksum	./src/common/protocol/connection/connection.c	/^bool checksum(ppkg_t p_pkg)$/;"	f	signature:(ppkg_t p_pkg)
 checksum	./src/common/protocol/connection/connection.c	/^static	bool	checksum(ppkg_t p_pkg);$/;"	p	file:	signature:(ppkg_t p_pkg)
 checksum	./src/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+checksum	./src/server/common/protocol/connection/connection.c	/^bool checksum(ppkg_t p_pkg)$/;"	f	signature:(ppkg_t p_pkg)
 checksum	./src/server/common/protocol/connection/connection.c	/^static	bool	checksum(ppkg_t p_pkg);$/;"	p	file:	signature:(ppkg_t p_pkg)
 checksum	./src/server/common/protocol/connection/connection.h	/^	u32		checksum;$/;"	m	struct:_pkg_head	access:public
+close_connection	./src/client/common/protocol/connection/connection.c	/^void			close_connection(pconnection_t p_conn);$/;"	p	file:	signature:(pconnection_t p_conn)
 close_connection	./src/client/common/protocol/connection/connection.h	/^void			close_connection(pconnection_t p_conn);$/;"	p	signature:(pconnection_t p_conn)
+close_connection	./src/common/protocol/connection/connection.c	/^void			close_connection(pconnection_t p_conn);$/;"	p	file:	signature:(pconnection_t p_conn)
 close_connection	./src/common/protocol/connection/connection.h	/^void			close_connection(pconnection_t p_conn);$/;"	p	signature:(pconnection_t p_conn)
+close_connection	./src/server/common/protocol/connection/connection.c	/^void			close_connection(pconnection_t p_conn);$/;"	p	file:	signature:(pconnection_t p_conn)
 close_connection	./src/server/common/protocol/connection/connection.h	/^void			close_connection(pconnection_t p_conn);$/;"	p	signature:(pconnection_t p_conn)
+closesocket	./src/client/common/protocol/connection/connection.c	33;"	d	file:
+closesocket	./src/common/protocol/connection/connection.c	33;"	d	file:
+closesocket	./src/server/common/protocol/connection/connection.c	33;"	d	file:
 color	./src/client/common/common/map/map.c	47;"	d	file:
 color	./src/client/common/common/map/map.h	/^	unsigned long			color;			\/\/Red or black$/;"	m	struct:_rbtree_node	access:public
 color	./src/common/common/map/map.c	47;"	d	file:
@@ -270,14 +288,29 @@ color	./src/server/common/common/map/map.h	/^	unsigned long			color;			\/\/Red o
 comment	./src/client/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
 comment	./src/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
 comment	./src/server/common/common/ini/ini.h	/^	char*		comment;$/;"	m	struct:_ini_comment	access:public
-connection_init	./src/client/common/protocol/connection/connection.h	/^bool			connection_init();$/;"	p	signature:()
-connection_init	./src/common/protocol/connection/connection.h	/^bool			connection_init();$/;"	p	signature:()
-connection_init	./src/server/common/protocol/connection/connection.h	/^bool			connection_init();$/;"	p	signature:()
+conn_socket	./src/client/common/protocol/connection/connection.c	/^static	SOCKET	conn_socket;$/;"	v	file:
+conn_socket	./src/common/protocol/connection/connection.c	/^static	SOCKET	conn_socket;$/;"	v	file:
+conn_socket	./src/server/common/protocol/connection/connection.c	/^static	SOCKET	conn_socket;$/;"	v	file:
+connection_destroy	./src/client/common/protocol/connection/connection.c	/^void connection_destroy()$/;"	f
+connection_destroy	./src/client/common/protocol/connection/connection.h	/^void			connection_destroy();$/;"	p	signature:()
+connection_destroy	./src/common/protocol/connection/connection.c	/^void connection_destroy()$/;"	f
+connection_destroy	./src/common/protocol/connection/connection.h	/^void			connection_destroy();$/;"	p	signature:()
+connection_destroy	./src/server/common/protocol/connection/connection.c	/^void connection_destroy()$/;"	f
+connection_destroy	./src/server/common/protocol/connection/connection.h	/^void			connection_destroy();$/;"	p	signature:()
+connection_init	./src/client/common/protocol/connection/connection.c	/^bool connection_init(u32 port)$/;"	f	signature:(u32 port)
+connection_init	./src/client/common/protocol/connection/connection.h	/^bool			connection_init(u32 port);$/;"	p	signature:(u32 port)
+connection_init	./src/common/protocol/connection/connection.c	/^bool connection_init(u32 port)$/;"	f	signature:(u32 port)
+connection_init	./src/common/protocol/connection/connection.h	/^bool			connection_init(u32 port);$/;"	p	signature:(u32 port)
+connection_init	./src/server/common/protocol/connection/connection.c	/^bool connection_init(u32 port)$/;"	f	signature:(u32 port)
+connection_init	./src/server/common/protocol/connection/connection.h	/^bool			connection_init(u32 port);$/;"	p	signature:(u32 port)
 connection_t	./src/client/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
 connection_t	./src/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
 connection_t	./src/server/common/protocol/connection/connection.h	/^} connection_t, *pconnection_t;$/;"	t	typeref:struct:_connection
+create_connection	./src/client/common/protocol/connection/connection.c	/^pconnection_t	create_connection(char* address);$/;"	p	file:	signature:(char* address)
 create_connection	./src/client/common/protocol/connection/connection.h	/^pconnection_t	create_connection(char* address);$/;"	p	signature:(char* address)
+create_connection	./src/common/protocol/connection/connection.c	/^pconnection_t	create_connection(char* address);$/;"	p	file:	signature:(char* address)
 create_connection	./src/common/protocol/connection/connection.h	/^pconnection_t	create_connection(char* address);$/;"	p	signature:(char* address)
+create_connection	./src/server/common/protocol/connection/connection.c	/^pconnection_t	create_connection(char* address);$/;"	p	file:	signature:(char* address)
 create_connection	./src/server/common/protocol/connection/connection.h	/^pconnection_t	create_connection(char* address);$/;"	p	signature:(char* address)
 data	./src/client/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon1	access:public
 data	./src/common/protocol/connection/connection.h	/^		u8			data[0];$/;"	m	struct:_pkg::__anon3	access:public
@@ -453,8 +486,11 @@ list_remove	./src/server/common/common/list/list.h	/^void			list_remove(plist_t 
 list_t	./src/client/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
 list_t	./src/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
 list_t	./src/server/common/common/list/list.h	/^} list_node_t, *plist_node_t, *list_t, **plist_t;$/;"	t	typeref:struct:_list_node
+listen_connection	./src/client/common/protocol/connection/connection.c	/^pconnection_t	listen_connection(u16 port);$/;"	p	file:	signature:(u16 port)
 listen_connection	./src/client/common/protocol/connection/connection.h	/^pconnection_t	listen_connection(u16 port);$/;"	p	signature:(u16 port)
+listen_connection	./src/common/protocol/connection/connection.c	/^pconnection_t	listen_connection(u16 port);$/;"	p	file:	signature:(u16 port)
 listen_connection	./src/common/protocol/connection/connection.h	/^pconnection_t	listen_connection(u16 port);$/;"	p	signature:(u16 port)
+listen_connection	./src/server/common/protocol/connection/connection.c	/^pconnection_t	listen_connection(u16 port);$/;"	p	file:	signature:(u16 port)
 listen_connection	./src/server/common/protocol/connection/connection.h	/^pconnection_t	listen_connection(u16 port);$/;"	p	signature:(u16 port)
 main	./src/client/main.c	/^int main(int argc, char* argv[])$/;"	f	signature:(int argc, char* argv[])
 main	./src/server/main.c	/^int main(int argc, char* argv[])$/;"	f	signature:(int argc, char* argv[])
@@ -578,9 +614,18 @@ read_buf_line	./src/common/common/ini/ini.c	/^bool read_buf_line(FILE* fp, char*
 read_buf_line	./src/common/common/ini/ini.c	/^static	bool			read_buf_line(FILE* fp, char** p_buf, size_t* p_len);$/;"	p	file:	signature:(FILE* fp, char** p_buf, size_t* p_len)
 read_buf_line	./src/server/common/common/ini/ini.c	/^bool read_buf_line(FILE* fp, char** p_buf, size_t* p_len)$/;"	f	signature:(FILE* fp, char** p_buf, size_t* p_len)
 read_buf_line	./src/server/common/common/ini/ini.c	/^static	bool			read_buf_line(FILE* fp, char** p_buf, size_t* p_len);$/;"	p	file:	signature:(FILE* fp, char** p_buf, size_t* p_len)
+recv_data	./src/client/common/protocol/connection/connection.c	/^size_t			recv_data();$/;"	p	file:
 recv_data	./src/client/common/protocol/connection/connection.h	/^size_t			recv_data();$/;"	p	signature:()
+recv_data	./src/common/protocol/connection/connection.c	/^size_t			recv_data();$/;"	p	file:
 recv_data	./src/common/protocol/connection/connection.h	/^size_t			recv_data();$/;"	p	signature:()
+recv_data	./src/server/common/protocol/connection/connection.c	/^size_t			recv_data();$/;"	p	file:
 recv_data	./src/server/common/protocol/connection/connection.h	/^size_t			recv_data();$/;"	p	signature:()
+recv_thread	./src/client/common/protocol/connection/connection.c	/^static	void*	recv_thread(void* arg);$/;"	p	file:	signature:(void* arg)
+recv_thread	./src/client/common/protocol/connection/connection.c	/^void* recv_thread(void* arg)$/;"	f	signature:(void* arg)
+recv_thread	./src/common/protocol/connection/connection.c	/^static	void*	recv_thread(void* arg);$/;"	p	file:	signature:(void* arg)
+recv_thread	./src/common/protocol/connection/connection.c	/^void* recv_thread(void* arg)$/;"	f	signature:(void* arg)
+recv_thread	./src/server/common/protocol/connection/connection.c	/^static	void*	recv_thread(void* arg);$/;"	p	file:	signature:(void* arg)
+recv_thread	./src/server/common/protocol/connection/connection.c	/^void* recv_thread(void* arg)$/;"	f	signature:(void* arg)
 remove_rebalance	./src/client/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
 remove_rebalance	./src/client/common/common/map/map.c	/^void remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	f	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
 remove_rebalance	./src/common/common/map/map.c	/^static	void	remove_rebalance(pmap_t p_map, prbtree_node_t p_node,$/;"	p	file:	signature:(pmap_t p_map, prbtree_node_t p_node, prbtree_node_t p_parent)
@@ -629,8 +674,11 @@ section_name	./src/server/common/common/ini/ini.h	/^	char*		section_name;$/;"	m	
 sections	./src/client/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
 sections	./src/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
 sections	./src/server/common/common/ini/ini.h	/^	list_t	sections;$/;"	m	struct:_ini_file_info	access:public
+send_data	./src/client/common/protocol/connection/connection.c	/^size_t			send_data();$/;"	p	file:
 send_data	./src/client/common/protocol/connection/connection.h	/^size_t			send_data();$/;"	p	signature:()
+send_data	./src/common/protocol/connection/connection.c	/^size_t			send_data();$/;"	p	file:
 send_data	./src/common/protocol/connection/connection.h	/^size_t			send_data();$/;"	p	signature:()
+send_data	./src/server/common/protocol/connection/connection.c	/^size_t			send_data();$/;"	p	file:
 send_data	./src/server/common/protocol/connection/connection.h	/^size_t			send_data();$/;"	p	signature:()
 sibling	./src/client/common/common/map/map.c	37;"	d	file:
 sibling	./src/common/common/map/map.c	37;"	d	file:

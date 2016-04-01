@@ -17,7 +17,14 @@
 
 #pragma once
 
-#include <sys/socket.h>
+#ifdef	WINDOWS
+	#include <winsock2.h>
+#endif	//WINDOWS
+
+#ifndef	WINDOWS
+	#include <sys/socket.h>
+#endif	//!	WINDOWS
+
 #include "../../common/common.h"
 
 #define	PKG_TYPE_CONNECT	0
@@ -51,7 +58,8 @@ typedef	union	_pkg {
 } pkg_t, *ppkg_t;
 #pragma pack(pop)
 
-bool			connection_init();
+bool			connection_init(u32 port);
+void			connection_destroy();
 pconnection_t	create_connection(char* address);
 pconnection_t	listen_connection(u16 port);
 void			close_connection(pconnection_t p_conn);

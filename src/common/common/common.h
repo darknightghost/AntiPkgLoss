@@ -21,4 +21,4 @@
 #include "map/map.h"
 #include "ini/ini.h"
 
-#define	UNREFERENCED_PARAMER(x)	(void)(x)
+#define	UNREFERENCED_PARAMETER(x)	(void)(x)
