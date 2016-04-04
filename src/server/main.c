@@ -21,13 +21,12 @@
 #include <errno.h>
 #include "common/common/common.h"
 
-
 int main(int argc, char* argv[])
 {
 	//Load config
 	//Initialize log module
 	//Run as daemon
-	if(daemon(0, 0) != 0) {
+	if(daemon(1, 0) != 0) {
 		return errno;
 	}
 

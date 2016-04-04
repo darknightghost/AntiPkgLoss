@@ -16,6 +16,7 @@
 */
 
 #include "ini.h"
+#include "../common.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,8 +31,8 @@ static	pini_key_t		get_key(pini_section_t p_section, char* key,
                                 bool create);
 static	void			add_comment(plist_t p_list, char* comment);
 static	void			add_blank(plist_t p_list);
-static	void			section_destroy_callback(void* p_item, void* args);
-static	void			key_destroy_callback(void* p_item, void* args);
+static	void			section_destroy_callback(void* p_item);
+static	void			key_destroy_callback(void* p_item);
 
 pini_file_info_t ini_open(char* path)
 {
@@ -234,7 +235,7 @@ bool ini_sync(pini_file_info_t p_file)
 
 void ini_close(pini_file_info_t p_file)
 {
-	list_destroy(&(p_file->sections), section_destroy_callback, NULL);
+	list_destroy(&(p_file->sections), section_destroy_callback);
 	free(p_file->path);
 
 	if(p_file->fp != NULL) {
@@ -495,7 +496,7 @@ void add_blank(plist_t p_list)
 	return;
 }
 
-void section_destroy_callback(void* p_item, void* args)
+void section_destroy_callback(void* p_item)
 {
 	pini_section_t p_section;
 	pini_comment_t p_comment;
@@ -503,7 +504,7 @@ void section_destroy_callback(void* p_item, void* args)
 	p_section = p_item;
 
 	if(p_section->line.type == INI_LINE_SECTION) {
-		list_destroy(&(p_section->keys), key_destroy_callback, NULL);
+		list_destroy(&(p_section->keys), key_destroy_callback);
 		free(p_section->section_name);
 		free(p_section);
 
@@ -513,11 +514,10 @@ void section_destroy_callback(void* p_item, void* args)
 		free(p_comment);
 	}
 
-	UNREFERRED_PARAMETER(args);
 	return;
 }
 
-void key_destroy_callback(void* p_item, void* args)
+void key_destroy_callback(void* p_item)
 {
 	pini_key_t p_key;
 	pini_comment_t p_comment;
@@ -538,6 +538,5 @@ void key_destroy_callback(void* p_item, void* args)
 		free(p_comment);
 	}
 
-	UNREFERRED_PARAMETER(args);
 	return;
 }

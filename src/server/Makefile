@@ -7,7 +7,7 @@ CC = gcc
 CFLAGS = -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread -g -DDEBUG -DAMD64
 CCRULE = $(CC) $(CFLAGS) -o $@ $<
 LD = gcc
-LDFLAGS = 
+LDFLAGS = -pthread
 LDRULE = $(LD) $(LDFLAGS) -o $@ $^
 DEP = gcc
 DEPRULE = $(DEP) -MM -o $@ $<;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf("%s%s\n","$(OBJDIR)/$(ARCH)/",$$0)} NR != 1 {print $$0}' > $@; fi

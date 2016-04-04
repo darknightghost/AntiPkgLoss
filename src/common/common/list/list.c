@@ -124,3 +124,13 @@ void list_remove(plist_t p_list, plist_node_t p_node)
 
 	return;
 }
+
+void list_destroy(plist_t p_list, destroier destroy_func)
+{
+	while(*p_list != NULL) {
+		destroy_func((*p_list)->p_item);
+		list_remove(p_list, *p_list);
+	}
+
+	return;
+}

@@ -15,18 +15,5 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
-
-typedef	struct	_list_node {
-	struct	_list_node*		p_prev;
-	struct	_list_node*		p_next;
-	void*					p_item;
-} list_node_t, *plist_node_t, *list_t, **plist_t;
-
-#define	list_init(x)	((x) = NULL)
-plist_node_t	list_insert_before(plist_t p_list, plist_node_t p_position,
-                                   void* p_item);
-plist_node_t	list_insert_after(plist_t p_list, plist_node_t p_position,
-                                  void* p_item);
-void			list_remove(plist_t p_list, plist_node_t p_node);
-void			list_destroy(plist_t p_list, destroier destroy_func);
+#include "cfg.h"
+#include <stdlib.h>

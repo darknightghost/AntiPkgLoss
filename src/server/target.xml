@@ -9,7 +9,7 @@
 			<CFLAGS type="textbox">-m32 -c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread</CFLAGS>
 			<CCRULE type="textbox">$(CC) $(CFLAGS) -o $@ $&lt;</CCRULE>
 			<LD type="textbox">gcc</LD>
-			<LDFLAGS type="textbox">-m32</LDFLAGS>
+			<LDFLAGS type="textbox">-m32 -pthread</LDFLAGS>
 			<LDRULE type="textbox">$(LD) $(LDFLAGS) -o $@ $^</LDRULE>
 			<DEP type="textbox">gcc</DEP>
 			<DEPRULE type="textbox">$(DEP) -MM -o $@ $&lt;;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf(&quot;%s%s\n&quot;,&quot;$(OBJDIR)/$(ARCH)/&quot;,$$0)} NR != 1 {print $$0}' &gt; $@; fi</DEPRULE>
@@ -24,7 +24,7 @@
 			<CFLAGS type="textbox">-c -Wall -Werror-implicit-function-declaration -Wunused-parameter -Werror -pthread</CFLAGS>
 			<CCRULE type="textbox">$(CC) $(CFLAGS) -o $@ $&lt;</CCRULE>
 			<LD type="textbox">gcc</LD>
-			<LDFLAGS type="textbox"></LDFLAGS>
+			<LDFLAGS type="textbox">-pthread</LDFLAGS>
 			<LDRULE type="textbox">$(LD) $(LDFLAGS) -o $@ $^</LDRULE>
 			<DEP type="textbox">gcc</DEP>
 			<DEPRULE type="textbox">$(DEP) -MM -o $@ $&lt;;if [ $$? == 0 ];then cat $@|awk 'NR == 1 {printf(&quot;%s%s\n&quot;,&quot;$(OBJDIR)/$(ARCH)/&quot;,$$0)} NR != 1 {print $$0}' &gt; $@; fi</DEPRULE>
